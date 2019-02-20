@@ -1,9 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Form 表单</title>
 </head>
 <body>
 
+	<!-- 文本输入 -->
+	<form action="action_login.jsp" method="POST">
+		<fieldset>
+		<legend>fieldset 的标题	</legend>
+		姓名：<br/>
+		<input type="text" name="name"><br/>
+		性别：<br/>
+		<input type="text" name="sex">
+		<br/>
+		<input type="submit" value="Submit">
+				</fieldset>
+	</form>
+
+	<!-- 单选输入 -->
+	<form>
+		<input type="radio" name="sex" value="男" checked="checked"> 男 <br/>
+		<input type="radio" name="sex" value="女"> 女 <br/>
+	</form>
+	<br/>
+	<!-- select 下拉 -->
+	<select name="cars">
+			<option value="touyoiuta">Toyote</option>
+			<option value="bmw">宝马</option>
+			<option value="wuling">神车</option>
+		</select>
+		<br/>
+		<textarea name="message" rows="10" cols="20">
+			hendndnsssf sjdjsl sf s s s ssjsjjsjd d d d 
+		</textarea>
+		<br/>
+
+		<button value="btn" type="button" onclick="alert('Hellow world')">Click Me!</button>
+
+		<form>
+			密码：<br/>
+			<input type="password" name="pwd">
+			<br/>
+			我的车<br/>
+			<input type="checkbox" name="bmw"> 宝马
+			<br/>
+			<input type="checkbox" name="wuling"> 神车
+		</form>
 </body>
 </html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>style demo</title>
+	<style type="text/css">
+		/*派生选择器*/
+		li strong {
+			font-style: italic;
+			font-weight: normal;
+			font-size: 20px;
+		}
+
+		/*id 选择器*/
+		#red {
+			color: red;
+		}
+
+		#sidebar p{
+			color: green;
+			font-size: 16px;
+		}
+
+		/*类选择器*/
+		.center {
+			text-align: center;
+			color: #324212;
+		}
+
+		/*元素也可以基于他们的类做选择*/
+		td.fancy {
+			color: f60;
+			background-color: #666;
+		}
+
+		/*属性选择器 给指定有该属性的元素才能生效*/
+		[title] {
+			color: green;
+		}
+
+	</style>
+</head>
+<body>
+	<p><strong>不在列表中 style 不起作用</strong></p>
+	<ul>
+		<li><strong>在列表中起作用了吧</strong></li>
+	</ul>
+
+	<p>
+		<textarea id="red">id算这期生效把</textarea>
+	</p>
+
+	<div id="sidebar">
+		<p>yameidie a ,sidebar下面的p 都应该生效吧</p>
+
+		<p class="center">类选这期生效吧</p>
+
+		<td class="fancy">
+			<th>maye</th>
+			<tr><td>hehe</td></tr>
+			
+		</td>
+	</div>
+</body>
+</html>
