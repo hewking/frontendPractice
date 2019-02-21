@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js demo 1</title>
+
+	<style type="text/css">
+		p {
+			background-color: #eeeeee;
+			padding: 10px;
+		}
+	</style>
+
+		<script type="text/javascript">
+		function changeContent(argument) {
+			var x = document.getElementById("demo")
+			x.innerHTML = "来点儿带劲的"
+		}
+
+		function changeLight(argument) {
+			var light = document.getElementById("light")
+			if (light.src.match("bulbon")) {
+				light.src = "http://www.w3school.com.cn/i/eg_bulboff.gif"
+			} else {
+				light.src = "http://www.w3school.com.cn/i/eg_bulbon.gif"
+			}
+		}
+
+		function changeStyle(argument) {
+			var e = document.getElementById("p1")
+			e.style.color = "red"
+		}
+
+		function authInput(argument) {
+			/*if (isNaN(argument)) {
+				alert("不是一个数字啊！")
+			}*/
+
+			var e = document.getElementById("t1")
+			if (isNaN(e.value)) {
+				alert("输入有错")
+			} else {
+				alert("输入正确")
+			}
+		}
+
+		function write(argument) {
+			document.write(argument)
+		}
+
+		
+
+	</script>
+</head>
+<body>
+
+	<script type="text/javascript" src="/js/demo1.js"></script>
+	<p id="demo">
+		来点儿jsdemo了
+	</p>
+
+	<script type="text/javascript">
+		document.write("<h2>这是js的标题</h2><br/>")
+	</script>
+
+	<button type="button" onclick="alert('行不行啊')">点我啊</button>
+	<br/>
+
+
+	<button type="button" onclick="changeContent()">带劲的</button>
+
+	<br/>
+
+
+	<img id="light" src="http://www.w3school.com.cn/i/eg_bulbon.gif" onclick="changeLight()">
+
+	<p>通过点击图片关闭和打开灯泡</p>
+
+	<br/>
+
+	<p id="p1">改变HTML的样式style</p><br/>
+	<button type="button" onclick="changeStyle()">点击改变颜色</button>
+	<br/>
+
+	<p>验证输入</p><br/>
+	<button type="button" onclick="authInput('ffff')">验证下看看<butto>
+
+	<input type="text" id="t1" name="输入"><button onclick="authInput()">验证输入</button>
+	<br/>
+	<button type="button" onclick="write('jlaidianzhi')">看看会不会清空页面</button>
+	<br/>
+	<p id="p2">外部js改变style</p>
+	<button type="button" onclick="changeP2Style()">加载外部的js</button>
+</body>
+</html>

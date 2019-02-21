@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js 排序</title>
+	<script type="text/javascript">
+
+		var arr1 = new Array(10,20,6,2,32,32,76,35,54)
+		document.write("<p>冒泡排序</p>")
+
+		function bubbleSort(arr) {
+			for (var i = 0 ; i < arr.length - 1;i ++) {
+				for (var j = 0 ; j < arr.length - 1 - i ; j++) {
+					if (arr[j] > arr[j+1]) {
+						var n = arr[j+1]
+						arr[j+1] = arr[j]
+						arr[j] = n
+					}			
+				}
+			}
+		}
+
+		function quickSort(arr,start,end) {
+			if (start > end) {
+				return
+			}
+			var k = partition(arr,start,end)
+			quickSort(arr,start,k - 1)
+			quickSort(arr,k + 1,end)
+		}
+
+		// 分割算法 找出某个索引所在的值，所有的左边值比它小，右边值比它大
+		function partition(arr,start,end) {
+			var target = arr[start]
+			var i = start
+			var j = end
+			while(i < j) {
+				while(i < j && arr[j] >= target) {
+					j --
+				}
+
+				arr[i] = arr[j]
+
+				while(i < j && arr[i] <= target) {
+					i ++
+				}
+				arr[j] = arr[i]
+			}
+			arr[i] = target
+			return i
+		}
+
+		document.write(arr1)
+		document.write("<br/>排序后 <br/>")
+		// bubbleSort(arr1)
+		// document.write("排序结果：")
+		// document.write(arr1)
+
+		document.write("<br/>")
+		document.write("快速排序：<br/>")
+		quickSort(arr1,0,arr1.length -1)
+		document.write(arr1)	
+	</script>
+</head>
+<body>
+
+
+</body>
+</html>

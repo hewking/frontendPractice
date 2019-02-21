@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js 数据类型Demo</title>
+
+	<script type="text/javascript">
+		
+		function write(argument) {
+			document.write(argument)
+			wrap()
+		}
+
+		function wrap(argument) {
+			document.write("<br/>")
+		}
+
+		var arr = new Array()
+		arr[0] = "a"
+		arr[1] = "b"
+
+		arr[2] = true
+
+		var arr2 = new Array("c","d","e")
+
+		var arr3 = ["A","B","C"]
+
+		for (var i = arr.length - 1; i >= 0; i--) {
+			write(arr[i])
+		}
+
+		for (var i = arr2.length - 1; i >= 0; i--) {
+			write(arr2[i])
+		}
+
+		for (var i = arr3.length - 1; i >= 0; i--) {
+			write(arr3[i])
+		}
+
+		wrap()
+		write("<h2>javascript 对象</h2>")
+
+		var person = {
+			name : "tom",
+			age : 18,
+			sex : "male"
+		}
+
+		write(person.name)
+		write(person["age"])
+
+		write("清空变量")
+		var v1 = "heheda"
+		write(v1)
+		v1 = null
+		write(v1)
+
+		wrap()
+		write("声明变量类型")
+		var v2 = new String
+		var v3 = new Boolean
+
+		wrap()
+		for(attr in person) {
+			write(person[attr])
+		}
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
