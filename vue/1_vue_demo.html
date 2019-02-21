@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vue Demo1</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ message }}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.6/dist/vue.js"></script>
+    <script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue!'
+        }
+    })
+
+    var data = {a : 1}
+    var vm = new Vue({
+    	data : data
+    })
+
+    </script>
+</body>
+
+</html>

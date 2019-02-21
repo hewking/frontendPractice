@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js 的错误处理</title>
+	<script type="text/javascript">
+		function add(x,y) {
+			return x + y
+		}
+
+		function divide(a,b) {
+			try {
+				var e = document.getElementById("p1")
+				e.innerHTML = "要不完了"
+				throw "没办法 ，竟然不报除0错误"
+				return a/b
+			} catch(err) {
+				alert("发生了错误了啊" + err)
+			}
+		}
+
+		// with 是什么操作 通过dmeo 可以猜测是用来代表指定filed的。比如传入表单，可以直接调用表单对象的属性和值
+		function validateInput(input) {
+			with(input) {
+				if (input == null || input == ""){
+					alert("输入不合法")
+					return false
+				} else{
+					return true
+				}
+			}
+		}
+
+
+
+	</script>
+</head>
+<body>
+	<p id="p1">
+		怎么回事儿？
+	</p>
+	<input type="button" value="点击我" onclick="divide(1,0)">
+	<br/>
+	<button type="button" onclick="divide(1,0)">点我</button>
+
+	<br/>
+	<button type="button" onclick="validateInput('')">点我校验输入</button>
+</body>
+</html>

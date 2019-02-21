@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js Dom 事件处理</title>
+</head>
+<body>
+	<h2 onclick="this.innerHTML = '谢谢'">点击会改变内容</h2>
+
+	<br/>
+	<input type="text" name="t1" onchange="this.upperCase()">
+
+	<br/>
+	<p style="background-color: #eeeeee;padding : 10px"
+	onmouseover="this.innerHTML = '谢谢'" onmouseout="this.innerHTML = '请移动鼠标到这里'">
+		请移动鼠标到这里
+	</p>
+
+	<br/>
+	<div id="div1">
+	<p id="p1">
+		这是一个段落
+	</p>
+</div>
+	<script type="text/javascript">
+		var e = document.getElementById("div1")
+		var p2= document.createElement("p")
+		var text = document.createTextNode("这是新段落")
+		p2.appendChild(text)
+
+		e.appendChild(p2)
+
+	</script>
+</body>
+</html>
