@@ -58,7 +58,31 @@
 		document.write("<br/>")
 		document.write("快速排序：<br/>")
 		quickSort(arr1,0,arr1.length -1)
-		document.write(arr1)	
+		document.write(arr1)
+
+		document.write("<br/>")
+		document.write("<p>二分查找</p/")
+
+		function binarySearch(arr,k) {
+			var low = 0,high = arr.length -1
+			var m = 0
+			while(low < high) {
+				m =  parseInt((low + high) / 2)
+				if (arr[m] == k) {
+					return m
+				} else if (arr[m] < k) {
+					low = m 
+				} else if (arr[m] > k) {
+					high = m
+				} 
+			}
+			return -1
+		}
+
+		var arr2 = new Array(2,5,7,8,44,45)
+
+		document.write("<br/>二分查找结果 ： " + binarySearch(arr2,8))
+
 	</script>
 </head>
 <body>
