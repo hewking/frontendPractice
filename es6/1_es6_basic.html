@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>es6 的基本用法</title>
+    <script type="text/javascript" src="../js/demo1.js"></script>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+    $(document).ready(function fun1(arg) {
+        for (let i = 0; i < 5; i++) {
+            writeP("let : " + i)
+        }
+    })
+
+    {
+        let a = 2
+        var b = 3
+    }
+    // 1_es6_basic.html:21 Uncaught ReferenceError: a is not defined
+    // writeP(a)
+    writeP(b)
+
+    $(document).ready(function fun2(argument) {
+        var a = []
+        for (var i = 0; i < 3; i++) {
+            a[i] = function a() {
+                console.log(i)
+            }
+        }
+
+        a[2]()
+
+        for (let j = 0; j < 3; j++) {
+            a[j] = function a() {
+                console.log(j)
+            }
+        }
+
+        a[2]()
+    })
+
+   	{
+   		function f(argument) {
+   			console.log("i'im in outside")
+   		}
+
+   		function j(){
+   			if (false) {
+   				function f(argument){
+   				console.log("i'm in inside")
+   			}
+   			}
+
+   			f()
+   		}
+
+   		f()
+   	}
+
+    </script>
+</body>
+
+</html>

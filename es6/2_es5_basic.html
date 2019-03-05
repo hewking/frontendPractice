@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>es6 demo</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    function f() { console.log('I am outside!'); }
+
+    (function() {
+        if (false) {
+            // 重复声明一次函数f
+            let f = function f() { console.log('I am inside!'); }
+        }
+
+        f();
+    }());
+    </script>
+</body>
+
+</html>
