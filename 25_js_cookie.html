@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js cookie</title>
+	<script type="text/javascript" src="js/demo1.js"></script>
+	<script type="text/javascript">
+		function setCookie(c_name,value,expire) {
+			var date = new Date()
+			date.setDate(date.getDate() + expire)
+			document.cookie = c_name 
+			+ "=" + escape(value)
+			 + ((expire == null) ? "" :";expire=" + date.toGMTString())
+		}
+
+		function getCookie(c_name) {
+			var cookie = document.cookie
+			console.log(cookie)
+			if (cookie != null && cookie.length > 0) {
+				var start = cookie.indexOf(c_name + "=")
+				if (start != -1) {
+					start = start + c_name.length
+					var end = cookie.indexOf(";",start)
+					if (end == -1) {
+						end = cookie.length
+					}
+					return unescape(cookie.substring(start,end))
+				}
+			}
+			return ""
+		}
+
+		function checkCookie() {
+			var user = getCookie("username")
+			if (user != null && user.length > 0) {
+				alert("欢迎您继续登录:" + user)
+			} else {
+				var name = prompt("请输入您的用户名:","好帅啊")
+				if (name != null && name.length > 0) {
+					setCookie("username",name,365)
+				}
+			}
+		}
+
+	</script>
+</head>
+<body onload="checkCookie">
+	
+	
+
+	<!-- <input type="button" value="点我试试" onclick="checkCookie()"> -->
+
+</body>
+</html>

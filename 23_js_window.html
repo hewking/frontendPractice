@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js 的窗口</title>
+	<script type="text/javascript" src="js/demo1.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		writeP(window.innerHeight)
+		writeP(window.innerWidth)
+
+		// var height = window.innerHeight || document.body.clientHeight || document.documentElement.clientHeight
+
+		// var width = window.innerWidth || document.bocy.clientWidth || document.documentElement.clientWidth
+
+		var width = windowSpec()[0]
+		var height = windowSpec()[1]
+
+		write("浏览器宽度为:" + width)
+		write("浏览器高度为: " + height)
+
+		writeP("可用宽度：" + screen.availWidth)
+		writeP("可用高度:" + screen.availHeight)
+
+		writeP("路径:" + location.pathname)
+		writeP("port : " + location.port)
+		writeP("host : " + location.hostname)
+		writeP("protocal : " + location.protocol)
+		document.write(location.href);
+		write("<br/>")
+		document.write(location.pathname)
+		write("<br/>")
+		document.write(location.port)
+
+
+
+	</script>
+
+	<button onclick="window.close()">点我关闭</button><br/>
+	<button onclick="window.moveTo(200,200)">点我移动</button><br/>
+	<input type="button" name="newdoc" onclick="newDoc('www.baidu.com')" value="新的窗口"><br/>
+	
+	<p>
+		<input type="button" value="前进" onclick="forward()">
+		<br/>
+		<input type="button" value="后退" onclick="back()">
+	</p>
+
+	<p>
+		<script type="text/javascript">
+			write(window.navigator.platform)
+		wrap()
+		write(window.navigator.appCodeName)	
+		wrap()
+		write(window.navigator.appVersion)
+		</script>
+		
+		<input type="button" value="警告框" onclick="alert('这是警告')"><br/>
+		<input type="button" value="确认框" onclick="confirm('这是确认框')"><br/>
+		<input type="button" value="提示框" onclick="prompt('这是提示框','默认值')">
+
+	</p>
+
+</body>
+</html>

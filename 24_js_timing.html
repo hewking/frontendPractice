@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js 计时</title>
+	<script type="text/javascript" src="js/demo1.js"></script>
+</head>
+<body>
+
+	<script type="text/javascript">
+		var value = 0
+		var t
+		function startTimer() {
+			document.getElementById("txt").value = value
+			value ++
+			 t = setTimeout("startTimer()",1000)
+		}
+
+		function stopTimer() {
+			clearTimeout(t)
+		}
+
+	</script>
+	
+	<input type="button" onclick="startTimer()" value="开始计时"><br/>
+	<input type="text" id="txt"><br/>
+	<input type="button" value="停止计时" onclick="clearTimeout(t)">
+
+</body>
+</html>
