@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>字符串的扩展</title>
+	<script type="text/javascript" src="../js/demo1.js"></script>
+	<script type="text/javascript" src="../js/es6util.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		writeP("\u0061")
+		writeP("\uD842\uDFB7")
+
+		let s = "\uD842\uDFB7"
+		let len = s.length
+		let at0 = s.charAt(0)
+		let at1 = s.charAt(1)
+		let atCode0 = s.charCodeAt(0)
+		let atCOde1 = s.charCodeAt(1)
+
+		writeP("s : " + s + " len : " + len + " at0 :" + at0 + " at1：" + at1 + " atCode0 : " + atCode0 + " atCOde1 : " + atCOde1)
+
+		let s2 = "\uD842\uDFB7a"
+
+		writeP(s2.codePointAt(0) + " " + s2.codePointAt(1).toString(16) + " " + s2.codePointAt(2))
+
+		for(let ch of s2) {
+			writeP(ch.codePointAt(0).toString(16))
+		}
+
+		writeP(is32bit("𠮷"))
+
+		writeP(String.fromCharCode(0x20bb7))
+		writeP(String.fromCodePoint(0x20bb7))
+
+		writeP(String.fromCodePoint(0x78,0x20bb7) === 'x\uD842\uDFB7')
+
+		for(let c of "hello") {
+			writeP(c)
+		}
+
+		let c2 = String.fromCodePoint(0x20bb7)
+		for (let i = 0 ; i < c2.length;i++) {
+			writeP(c2[i])
+		}
+
+		for(let i of c2) {
+			writeP(i)
+		}
+
+		let u1 = '\u01d1'
+		let u2 = '\u004f\u030c'
+		writeP(u1 + " " + u2)
+		writeP(u1.normalize() === u2.normalize())
+
+		let s3 = "hello es6"
+
+		writeP(s3.includes("he"))
+		writeP(s3.startsWith("h"))
+		writeP(s3.endsWith("6"))
+
+		// 都支持第二个参数表示开始搜索的位置
+		writeP(s3.includes("el",2))
+		writeP(s3.startsWith("l",2))
+		// endsWith endsWith的行为与其他两个方法有所不同。它针对前n个字符，而其他两个方法针对从第n个位置直到字符串结束
+
+		writeP(s3.endsWith("lo",5))
+
+		// repeat
+		writeP("xxx".repeat(2))
+		writeP(s3.repeat(3))
+		writeP(s3.repeat(0))
+
+		writeP("love".padStart(10,"i "))
+		writeP("love".padEnd(10,"you"))
+
+		// 常见用法
+		writeP("12".padStart(10,'0'))
+
+		let name = "hahha"
+		writeP(`in javascript '\n' is a line-feed love ${name}`)
+
+		writeP(String.raw`Hi \u000A`)
+
+	</script>
+</body>
+</html>

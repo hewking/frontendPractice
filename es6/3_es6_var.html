@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>es6 变量和结构赋值</title>
+    <script type="text/javascript" src="../js/demo1.js"></script>
+    <script>
+    // let a = 1
+    // let b = 2
+    // let c = 3
+
+    let [a, b, c] = [1, 2, 3]
+
+    writeP("a : " + a + " b : " + b + " c : " + c)
+
+    let [d, [e, f]] = [3, [13, 23]]
+
+    writeP("d : " + d + " e : " + e + " f : " + f)
+
+    let [x, ...y] = [1, 2, 3, 4]
+
+    writeP("x : " + x + " y : " + y)
+
+    //结构不成功
+    let [x1] = []
+
+    writeP("x1 : " + x1)
+
+    // 不完全解构
+    let [x2, y2] = [2, 3, 4]
+
+    let [x3, [y3], x4] = [3, [2, 12], 4]
+
+    writeP("x2 : " + x2 + " y2 : " + y2 + "x3 : " + x3 + " y3 : " + y3 + " x4 : " + x4)
+
+    let [x5, y5] = new Set(["zheniubi", "niubigegui"])
+    writeP("x5 : " + x5 + " y5 : " + y5)
+
+    // 允许有默认值
+    let [x6 = "默认的"] = []
+    writeP("x6 : " + x6)
+
+    // 对象的解构赋值
+    let { bar, foo } = { bar: "hehe", foo: "dada" }
+
+    writeP("bar : " + bar + " foo : " + foo)
+
+    let arr = [1, 2, 3]
+    let { 0: first, [arr.length - 1]: end } = arr
+
+    writeP("first : " + first + " end : " + end)
+
+    let [z1, z2, z3] = "hello"
+
+    writeP("z1 : " + z1 + " z2: " + z2 + " z3 : " + z3)
+
+    let { toString: s } = 123
+
+
+    writeP(s === Number.prototype.toString)
+
+    // 函数参数的解构赋值
+
+
+    function add([a, b]) {
+        return a + b
+    }
+
+    writeP(add([1, 2]))
+
+    function move({ x = 0, y = 0 } = {}) {
+        return [x, y]
+    }
+
+    writeP(move({ x: 3, y: 2 }))
+
+    let v1 = [2, undefined, 3].map((x = 'yes') => x)
+    writeP(v1)
+
+    // 应用场景
+    let xx = 10;
+    let yy = 20;
+
+    [xx,yy] = [yy,xx]
+
+    writeP("xx : " + xx + " yy : " + yy)
+
+    // let xx = 1;
+    // let yx = 2;
+
+    // [xx, yx] = [yx, xx];
+    // writeP("xx : " + xx + " yx : " + yx)
+
+    // 返回数组或者对象
+
+    let [ax,bx,yx] = function e1() {
+    	return [1,2,3];
+    }()
+
+    writeP("ax : " + ax + "bx : " + bx + " yx : " + yx)
+
+    let {foo1,bar1} = function e2(argument) {
+    	return {
+    	foo1:"heheeh",bar1:"ahahah"
+    }
+    }()
+
+    writeP("foo ： " + foo1 + "bar : " + bar1)
+
+    // json
+    let jsondata = {
+    	id:10,
+    	state : "ok",
+    	data : [10,20]
+    }
+
+    let {id,state,data:number}= jsondata;
+
+    writeP("id : " + id + " state : " + state + " data : " + number)
+
+    // 遍历Map
+    const map = new Map();
+    map.set("first",1);
+    map.set("second",2);
+
+    for(let [key,value] of map) {
+    	writeP("key : " + key + "value : " + value)
+    }
+ 
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

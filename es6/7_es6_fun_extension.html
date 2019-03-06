@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>函数的扩展</title>
+    <script type="text/javascript" src="../js/demo1.js"></script>
+    <script type="text/javascript" src="../js/es6util.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+    function log(tag, msg) {
+        if (typeof msg === 'undefined') {
+            msg = 'world'
+        }
+        console.log(tag, msg)
+    }
+
+    log('hello')
+    log('hello', 'world')
+    log('hello', '')
+
+    function log2(tag = "ES6", msg) {
+        console.log(tag, msg)
+    }
+
+    log2('', "hehehe")
+    log2("aa", "bb")
+    log2(undefined, "fff")
+
+    function Point(x = 10, y = 10) {
+        this.x = x
+        this.y = y
+    }
+    let p = new Point()
+    log2(p.x, p.y)
+
+    for (a in p) {
+        log2("attr : ", p[a])
+    }
+
+    function fun1({ x, y = 10 } = {}) {
+        log2(x, y)
+    }
+
+    fun1({ x: 10, y: 20 })
+
+    fun1()
+
+    let fun3 = (a, b) => { return a + b }
+    log2("fun3", fun3(1, 2))
+
+    function sum(x, y) {
+        'use strict'
+        if (y > 0) {
+            return sum(x + 1, y - 1);
+        } else {
+            return x;
+        }
+    }
+
+    // writeP(sum(1, 100000))
+
+    function factorial(n, total = 1) {
+        if (n === 1) return total;
+        return factorial(n - 1, n * total);
+    }
+
+    writeP(factorial(50))
+
+//求阶层
+    function line(n,total = 1){
+    	if (n === 1) {
+    		return total
+    	}
+    	return line(n-1,n * total)
+    }
+
+    writeP(line(100))
+
+    function fabo(n){
+    	if (n <= 1) {
+    		return 1
+    	}
+    	return fabo(n-1) + fabo(n-2)
+    }
+
+    function fabo2(n,a1 = 1,a2 = 1){
+    	if (n <= 1) {
+    		return a2
+    	}
+    	return fabo2(n-1,a2,a1 + a2)
+    }
+
+    writeP(fabo(10))
+    writeP(fabo2(10))
+    </script>
+</body>
+
+</html>
