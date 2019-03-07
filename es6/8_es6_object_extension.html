@@ -5,6 +5,207 @@
 	<script type="text/javascript" src="../js/demo1.js"></script>
 </head>
 <body>
+	<script type="text/javascript">
+		
+		const Person = {
+			name : "zhangsan",
+			age : 18,
 
+			walk(){
+				console.log("my name is : " + this.name)
+			}
+
+		}
+
+		Person.walk()
+
+		const foo = 'bar'
+		const baz = {foo}
+
+		writeP(baz)
+
+		function f(x,y) {
+			return {x,y};
+		}
+
+		console.log(f(3,5).x)
+
+		// 
+
+		const o = {
+			method(){
+				return "hello"
+			},
+
+			m2 : function(){
+				return "world"
+			}
+		}
+
+		console.log(o.method())
+		console.log(o.m2())
+
+		function getPoint(){
+			const x = 10
+			const y = 20
+
+			return {x,y}
+		}
+
+		console.log(getPoint().x + " : " + getPoint().y)
+
+		let ms = {}
+
+		function getItem(key) {
+			return key in ms ? ms[key] : null
+		}
+
+		function setItem(key,value) {
+			ms[key] = value
+		}
+
+		function clear(){
+			ms = {}
+		}
+
+		// module.exports = {getItem,setItem,clear}
+
+		const car = {
+			wheel : 4,
+
+			set wheel(value) {
+				if (value < this.wheel) {
+					throw new Error("too smart")
+					this.wheel = value
+				}
+			},
+
+			get wheel(){
+				return this.wheel;
+			}
+		}
+
+		const obj = {
+			class (){
+				console.log('es6 属性名总是字符串，所以解析不了关键字 class')
+			}
+		}
+
+		var obj2 = {
+			'class' : function(){
+				console.log("以上代码 等同于 属性名 加上 ‘’号变为字符串")
+			}
+		}
+
+		obj.class()
+		obj2.class()
+
+		const obj3 = {
+			* m(){
+				yield 'hello generator method'
+			}
+		}
+
+		console.log(obj3.m())
+
+		// 定义对象属性
+		obj.name = "zhang"
+		obj['s' + 'ex'] = 'male'
+
+		// 真尼玛神了，还可以这样直接添加 属性，这哪儿还是类啊。直接是一个数据结构吧 hashmap吧
+		console.log("name : " + obj.name + " : sex : " + obj.sex)
+
+		//es6对象内表达式定义属性
+		let propKey = "foo"
+		const obj4 = {
+			[propKey] : true,
+			['a' + 'ge']  : 18
+		}
+
+		console.log(obj4.foo + " " + obj4.age)
+
+		let lastworld = 'last word'
+		const word = {
+			'first word' : 'hello',
+			[lastworld] : 'world',
+		}
+
+		console.log(word['last word'] + " "+ word['first word'] + " " + word[lastworld])
+
+		// 表达式还可以定义方法名
+		const obj5 = {
+			[lastworld] (){
+				return word[lastworld]
+			}
+		}
+
+		console.log("obj5 : " + obj5[lastworld]())
+
+		// 函数name 属性
+		const obj6 = {
+
+			name : 'zhang',
+
+			sayHi(){
+
+			},
+
+			get name(){
+
+			},
+
+			set name(n){}
+		}
+
+		console.log(obj6.sayHi.name)
+
+		// get set 方法的name
+		const descriptor = Object.getOwnPropertyDescriptor(obj6,'name')
+		console.log(descriptor.get.name + " " + descriptor.set.name)
+
+		// Function构造函数创建的方法
+		var n1 = (new Function()).name
+		var doSth = function(){
+
+		}
+
+		var n2 = doSth.bind().name
+
+		console.log("na : " + n1 + " n2 : " + n2)
+
+		// 对象的方法是一个symbol值
+		let key1 = Symbol("descriptor")
+		const obj7 = {
+			[key1](){
+
+			}
+		}
+
+		console.log(obj7[key1].name)
+
+		// 属性的可枚举型和遍历
+		let obj8 = {
+			foo : 123,
+			s : Symbol("zale")
+		}
+
+		let descriptor2 = Object.getOwnPropertyDescriptor(obj8,'foo')
+		console.log(descriptor2.name)
+		console.log(descriptor2.enumerable)
+
+		// 当为false 时候，以下的for ...in ,Object.keys(),JSON.stringify(),Object.assign() 会被忽略
+		for(p in obj8) {
+			console.log(obj8[p])
+		}
+
+		console.log(Object.keys(obj8))
+
+		console.log(Object.getOwnPropertyNames(obj8))
+
+		console.log(Object.getOwnPropertySymbols(obj8))
+
+		console.log(Reflect.ownKeys(obj8))
+
+	</script>
 </body>
 </html>
