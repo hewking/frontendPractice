@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>set 和 map</title>
+    <script type="text/javascript" src="../js/demo1.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+    const set = new Set();
+    [2, 3, 5, 4, 5, 2, 2].forEach(x => set.add(x));
+
+    for(let i of set) {
+    console.log(i)
+    };
+
+	const s1 = new Set([1, 2, 3, 4, 4]);
+
+    s1.forEach(x => log(x))
+
+    log([...s1])
+
+    // 去除数组重复
+    let arr = [23,43,23,12,1,1,12]
+    log([...new Set(arr)])
+
+    log([...new Set('abcdeab')])
+
+    // add delete has clear
+
+    const s2 = new Set();
+    s2.add(1).add('3').add('5');
+    log(s2.delete(1))
+    log(s2.has('3'))
+
+    s2.clear()
+
+    log([...s2])
+
+    const items = new Set([1,3,12])
+    log([...Array.from(items)])
+
+    function dedupe(arr) {
+    	return Array.from(new Set(arr))
+    }
+
+    log([...dedupe([3,3,1,1,2])])
+
+    // set 遍历
+    // keys() values() entries()  forEach()
+    const s3 = new Set([3,2,5,32,5,66])
+    s3.forEach(x => {log(Math.pow(x,2))})
+
+    for (let x of s3.keys()) {
+    	log(x)
+    }
+
+    for (let v of s3.values()) {
+    	log("v" + v)
+    }
+
+    for (let kv of s3.entries()) {
+    	log([...kv])
+
+    }
+
+    for (let v of s3) {
+    	log(v)
+    }
+
+    s3.forEach((k,v) => {
+    	log(k + " " + v)
+    })
+
+    //以下是map的部分
+    const map = new Map();
+    const o = {p : "hello"};
+    map.set(o,'content')
+
+    log(map.get(o))
+
+    map.has(o)
+    map.delete(o)
+    map.has(o)
+
+    const map2 = new Map([['name','zhang'],['age',12],['sex','male']]);
+
+    log(map2.get('name'));
+
+    // 实际上执行以下方法
+    let items1 = [['name','zhang'],['age',12],['sex','male']];
+    const map3 = new Map();
+    items1.forEach(([k,v]) => {map3.set(k,v)});
+
+    log(map3)
+
+    const s4 = new Set([['name','chen'],['age',13]])
+    const map4 = new Map(s4)
+
+    log(map4.get('name'))
+
+    const map5 = new Map(map4)
+
+    log(map5.get('age'))
+
+    // map的遍历
+    // keys values entries forEach
+
+    const map6 = new Map(items1)
+
+    map6.forEach(x => {
+    	log(x)
+    })
+
+    for(let k of map6.keys()) {
+    	log(k + ' value ' + map6.get(k))
+    }
+
+    for(let v of map6.values()) {
+    	log(v)
+    }
+
+    for (let entry of map6.entries()) {
+    	log('k : ' + entry[0]  + ' v :' +  entry[1])
+    }
+
+    for (let [k,v] of map6.entries()) {
+    	log('k: ' + k + " v : " + v)
+    }
+
+    for (let [k,v] of map6) {
+    	log('k : ' + k + " v : " + v)
+    }
+
+    log(map6[Symbol.iterator])
+
+    log([...map6])
+
+
+    log([...map6.keys()])
+
+    log([...map6.values()])
+
+    log([...map6.entries()])
+
+    log([...map6])
+
+    // map 和 filter
+        log("______________________")
+    const map8 = new Map([...map6].map(([k,v]) => {
+    	return [k + '*','_' + v]
+    }))
+
+    for (let v of map8.values()) {
+    	log(v)
+    }
+
+    log("______________________")
+
+    const map7 = new Map([...map6].filter(([k,v]) => k === 'name'))
+
+    log([...map7.entries()])
+
+    log([...map6])
+    log("______________________")
+
+    map7.forEach((k,v,m) => {log(k + " k : " + k + " m : " + m)})
+
+    const reporter = {
+    	report(k,v){
+    		log("key : " + k + " value : " + v)
+    	},
+
+    	report2 : function(k,v) {
+    		    		log("key : " + k + " value : " + v)
+    	}
+    };
+
+    // 必须是function 才可以
+    map6.forEach(function(v,k,m){
+    	this.report2(k,v);
+    },reporter)
+
+    </script>
+</body>
+
+</html>

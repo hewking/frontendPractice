@@ -206,6 +206,27 @@
 
 		console.log(Reflect.ownKeys(obj8))
 
+		// super 关键字
+		const proto1 = {
+			foo : "hello"
+		}
+
+		const obj9 = {
+			foo : "world",
+			find(){
+				return super.foo
+			}
+		}
+
+		Object.setPrototypeOf(obj9,proto1)
+		console.log(obj9.find())
+
+		// 对象的拓展运算符
+		let foo3 = {...['a','b','c']}
+		console.log(foo3)
+
+
+
 	</script>
 </body>
 </html>
