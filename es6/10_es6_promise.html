@@ -4,6 +4,7 @@
 <head>
     <title>Promise 对象</title>
     <script type="text/javascript" src="../js/demo1.js"></script>
+    	    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -148,6 +149,68 @@
     	log('p1 success')
     })
 
+    // 异常处理
+
+   	const fun2 = function(){
+   		return new Promise(function(resolve,reject){
+   			throw new Error('this is a error')
+   			// resolve('value') 不会执行
+   		})
+   	}
+
+   	fun2().then((v) => {
+   		log('会执行吗')
+   	}).catch(error => {
+   		log(error)
+   	})
+
+   	Promise.resolve()
+   	.catch(function(error){
+   		log(error)
+   	}).then(() => {
+   		log('carry on')
+   	})
+
+   	// finally 不管后续状态如何都是会执行的
+   	const p3 = new Promise(function(resolve,reject){
+   		resolve('p3 success')
+   	})
+
+   	p3.then((result) => {
+   		log(result)
+   	}).finally(() => {
+   		log('finally')
+   	})
+
+   	// all
+
+   	const p4 = Promise.all([p1,p2,p3])
+   	p4.then(result => {
+   		log(result)
+   	}).catch(e => {
+   		log(e)
+   	})
+   	// race
+
+   	Promise.race([new Promise((r,j) => {
+   		setTimeout(j('rejected race'),2000)
+   	}),new Promise(function(resolve,reject){
+   		setTimeout(()=> {
+   			log('race change status')
+   			resolve('race success')
+   		},1000)
+   	})]).then(result => {
+   		log('race then ' + result)
+   	}).catch(e => {
+   		log('race catch')
+   	})
+
+   	// resolve
+   	const p5 = Promise.resolve($.ajax('http://gank.io/api/xiandu/categories'))
+   	// 等价于 new Promise(function(resolve,reject){resolve($.ajax('url'))})
+   	p5.then(result => {
+   		log(result)
+   	})
 
     </script>
 </body>

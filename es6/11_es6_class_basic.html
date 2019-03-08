@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>class 的基本语法</title>
+	 <script type="text/javascript" src="../js/demo1.js"></script>
+    	    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		// 传统方式生成对象
+		function Point(x,y) {
+			this.x = x;
+			this.y = y;
+			this.px = px;
+
+			function px(){
+				log('x : ' + x)
+			}
+		}
+
+		Point.prototype.toString = function() {
+			return '(' + this.x + " " + this.y + ')'
+		};
+
+		log(new Point(3,5).toString())
+
+		new Point(1,1).px()
+
+		// es6 方式
+		class Point2{
+			constructor(x,y) {
+				this.x = x;
+				this.y = y;
+			}
+
+			toString(){
+				return '(' + this.x + " " + this.y + ')'
+			}
+
+			get x(){
+				log(' get x : ')
+			}
+
+			set x(value){
+				// this.x = value
+				log('set x : ')
+			}
+		}
+
+		const p2 = new Point2(5,3)
+		log(p2.toString())
+
+		log(typeof Point2)
+		log(Point2.prototype.constructor == Point2)
+
+		Point.prototype = {
+			value(){},
+			vx(){
+				log(this.x)
+			},
+			vy(){log(this.y)}
+		}
+
+		new Point(2,2).vy()
+
+		// 因为class的方法是定义在prototype上的，所以给class 添加多个方法可以用Object .assign
+		Object.assign(Point2.prototype,{
+			vvx(){log('x : ' + this.x)},vvy(){log('y : ' + this.y)}
+		})
+
+		const p3 =  new Point2(3,3.3)
+		p3.vvy()
+
+		// 跟Kotlin 相似
+		p3.x = 3
+		p3.x
+
+		let method = 'getArea'
+
+		class Rect {
+
+			[method](){
+				log('prop exp')
+			}
+
+		}
+
+		new Rect().getArea()
+
+		const myclass = class Me {
+			getClassName(){
+				return Me.name
+			}
+		}
+
+		let inst= new myclass()
+		log(inst.getClassName())
+		// log(Me.name)
+
+		// 立即执行函数表达式 ()
+
+		// (function f(){
+		// 	log('立即执行了吗')
+		// }())
+
+		// 立即执行的class
+		const person = new class {
+			constructor(name){
+				this.name = name
+			}
+
+			sayName(){
+				log(this.name)
+			}
+ 		}('zhangsan')
+
+ 		person.sayName()
+
+ 		class Foo {
+
+ 			// 除了实例属性定义在constructor  还可以定义在类的顶部，跟java像
+  			// _count = 0;
+
+ 			// 加上static 就是静态属性了
+ 			// static _gan = 'hello'
+
+ 			constructor(...arg) {
+ 				this.arg = arg
+ 			}
+
+ 			// 方法前加* 号意味着 Generator 函数
+ 			* [Symbol.iterator](){
+ 				for (let arg of this.arg) {
+ 					yield arg
+ 				}
+ 			}
+
+ 			// 方法前加static 静态方法 跟java理解差不多哦
+ 			static isStatic(){
+ 				log(`没错我是静态的`)
+ 			}
+
+ 			static baz(){
+ 				log(' 我也是静态啦,this指的是本class额，不是类的对象')
+ 				this.isStatic()
+ 			}
+
+ 		}
+
+ 		for (let x of new Foo('hello ',' world')){
+ 			log(x)
+ 		}
+
+ 		// new Foo('hi').isStatic()
+ 		Foo.isStatic()
+ 		Foo.baz()
+ 		Foo._gan = 'gan'
+ 		log(Foo._gan)
+
+ 		// 当前浏览器可能没有实现
+ 		// class Foo1{
+ 		// 	count = 0;
+ 		// }
+
+	</script>
+</body>
+</html>

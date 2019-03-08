@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>类的继承</title>
+	<script type="text/javascript" src="../js/demo1.js"></script>
+	<script type="text/javascript" src="../js/es6util.js"></script>
+    	    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+</head>
+<body>
+	<script type="text/javascript">
+			
+		class Point{
+			constructor(x,y) {
+				this.x = x
+				this.y = y
+			}
+		}
+
+		class ColorPoint extends Point{
+			constructor(x,y,color) {
+				super(x,y)
+				this.color = color
+			}
+		}
+
+		const p = new ColorPoint(1,1,'red')
+
+		for (x in p) {
+			log(x)
+		}
+
+		class A {
+
+
+			static a(){
+				log('a static')
+			}
+
+			constructor(){
+				this.aa = 'aa'
+			}
+
+			aa(){
+				return this.aa
+			}
+		}
+			A.prototype.x = 'x'
+
+		class B extends A {
+			static b(){
+				log('b static')
+			};
+
+			constructor(){
+				super()
+				this.x = 'xx'
+				this.aa = 'bb'
+			};
+
+
+			bb(){
+				// aa 定义在父类的实例属性上，无法取到
+				return super.aa
+				// return this.x
+			};
+
+			ppp(){
+				// x 定义在A的 prototype上可以取到
+				return super.x
+			}
+
+			mm(){
+				return super.aa()
+			}
+
+		}
+
+		B.a()
+		B.b()
+
+		// 从子类获取父类
+		log(Object.getPrototypeOf(ColorPoint) === Point)
+
+		const b1 = new B()
+		log(b1.bb())
+		try {
+		log(b1.ppp())
+
+		}catch(e){
+			log(e)
+		}
+
+		// super 实际上是指向子类对象的
+		log(b1.mm())
+
+		// __proto__
+		log(B.__proto__ === A)
+		log(B.prototype.__proto__ === A.prototype)
+
+		// 原生构造函数
+		/**
+		Boolean()
+Number()
+String()
+Array()
+Date()
+Function()
+RegExp()
+Error()
+Object()
+		**/
+
+		// 自定义原生构造函数 es6可以做到 es5 不行
+
+		// mix in 多个对象合成一个新的对象
+
+		const obj1 = {
+			a : 'a'
+		}
+
+		const obj2 = {
+			b : 'b'
+		}
+
+		const obj3 = {...obj1,...obj2}
+
+		log(obj3.a + " " + obj3.b)
+
+		// const obj4 = mix(obj1,obj2)
+		// log('obj 4 : ' + obj4.a)
+
+	</script>
+</body>
+</html>
