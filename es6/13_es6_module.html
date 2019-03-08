@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Module的语法</title>
+	<script type="text/javascript" src="../js/demo1.js"></script>
+	<script type="text/javascript" src="../js/es6util.js"></script>
+    	    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+	<script type="module">
+		// CommonJs模块
+		// let {stat,exists,readFile} = require('fs')
+
+		// import {stat,exists,readFile} from 'fs'
+
+		//一个模块就是一个文件
+		// export 变量
+		// export var firstName = 'Michael';
+		// export var lastname = 'san'
+		// export var age = 18
+
+		// export {age}
+
+		// export {firstname,lastname,age}
+
+		// function fun1(argument) {
+		// 	// body...
+		// }
+
+		// // export 方法
+		// export fun2(){}
+
+		// export {fun2}
+
+		// // 重命名
+		// export {fun2 as f2}
+
+		// // import 命令
+		// import {firstname,getAge} from '/module/module1.js'
+
+		import {area} from './module/circle.js'
+
+		log(area(4))
+
+	</script>
+</body>
+</html>
