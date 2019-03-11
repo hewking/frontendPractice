@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Module加载的实现</title>
+	<script type="text/javascript" src="../js/demo1.js"></script>
+	<script type="text/javascript" src="../js/es6util.js"></script>
+    	    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+
+<!-- script>标签打开defer或async属性，脚本就会异步加载
+defer是“渲染完再执行”，async是“下载完就执行” -->
+	<script type="module" defer>
+		import {area} from './module/circle.js'
+		log(area(4))
+	</script>
+
+	<script type="text/javascript" async></script>
+</body>
+</html>
