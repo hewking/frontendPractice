@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>es6 ts 相关测试</title>
+	<script type="text/javascript" src="../js/demo1.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		const func = () => log('hello')
+
+		const name = 'zhang'
+
+		const func2 = ({name}) => log(`world : ` + name)
+
+		func()
+		func2('you')
+
+		class A {}
+		class Test  extends  A{
+
+			constructor(name){
+				super()
+				this.name = name
+			}
+
+		 // fun3 : (n) => {log(`${n}`)}
+
+		 fun3(n) {
+log(`${n}`)
+		 }
+
+		}
+
+		const test = new Test('yyy')
+		test.fun3('hello')
+		log(test.name)
+
+	</script>
+</body>
+</html>
