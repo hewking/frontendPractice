@@ -11,37 +11,110 @@
 		// CommonJs模块
 		// let {stat,exists,readFile} = require('fs')
 
-		// import {stat,exists,readFile} from 'fs'
+		import {stat,exists,readFile} from 'fs'
 
-		//一个模块就是一个文件
-		// export 变量
-		// export var firstName = 'Michael';
-		// export var lastname = 'san'
-		// export var age = 18
+		一个模块就是一个文件
+		export 变量
+		export var firstName = 'Michael';
+		export var lastname = 'san'
+		export var age = 18
 
-		// export {age}
+		export {age}
 
-		// export {firstname,lastname,age}
+		export {firstname,lastname,age}
 
-		// function fun1(argument) {
-		// 	// body...
-		// }
+		function fun1(argument) {
+			// body...
+		}
 
-		// // export 方法
-		// export fun2(){}
+		// export 方法
+		export fun2(){}
 
-		// export {fun2}
+		export {fun2}
 
-		// // 重命名
-		// export {fun2 as f2}
+		// 重命名
+		export {fun2 as f2}
 
-		// // import 命令
-		// import {firstname,getAge} from '/module/module1.js'
+		// import 命令
+		import {firstname,getAge} from '/module/module1.js'
 
 		import {area} from './module/circle.js'
 
+		// 给输入的变量重命名
+		import { firstname as first} from '/module/module1.js'
+
 		log(area(4))
 
+		import len from './module/circle.js'
+
+		// first = {} // 报错 ，import 命令是只读的
+
+		//util是模块文件名，由于不带有路径，必须通过配置，告诉引擎怎么取到这个模块。
+		import {are} from 'util'
+
+		// 注意，import命令具有提升效果，会提升到整个模块的头部，首先执行。 所以import 可以写在任意位置
+
+		// 模块的整体加载
+		import * as circle from './module/module1'
+		log(circle.are(4))
+
+		// export default 命令
+		//为了给用户提供方便，让他们不用阅读文档就能加载模块，就要用到export default命令，为模块指定默认输出。
+		export default function(){
+			log('foo')
+		}
+		
+		// 指定默认输出的函数的名字 这时import命令后面，不使用大括号。
+		import customM from  './module/module1'
+		log(customM())
+
+		//export default命令用于指定模块的默认输出。显然，一个模块只能有一个默认输出，因此export default命令只能使用一次
+
+		export var a = 1 // 正确
+		var b = 1;
+		export default b // 正确
+		export default var a = 1 // 错误，export default a的含义是将变量a的值赋给变量default。所以，最后一种写法会报错。 
+
+		export default 42 // correct
+		export 42 //error
+
+		// eg : input
+		import _ from 'loadsh'
+
+		// 同时输入默认输出和其它接口
+		import _ ,{each,foreach} from 'loadsh'
+
+		// 对应以上的Export语句
+		export default function (obj) {
+
+		}
+
+		export function each(){
+
+		}
+
+		export {each as foreach}
+
+		// export default 也可用于输出类
+		export default class {
+
+		}
+
+		import MyClass from 'myclass'
+		let obj = new MyClass()
+
+		//export import的复合写法
+		//如果在一个模块之中，先输入后输出同一个模块，import语句可以与export语句写在一起。
+		export ｛foo,bar｝ from 'my_moudle'
+
+		// 可以简单理解
+		import {foo,bar} from 'my_moudle'
+		export {foo,bar}
+		//，写成一行以后，foo和bar实际上并没有被导入当前模块，只是相当于对外转发了这两个接口，导致当前模块不能直接使用foo和bar。
+
+
+		// 模块之间的继承
+		
 	</script>
 </body>
 </html>

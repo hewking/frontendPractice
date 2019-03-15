@@ -26,7 +26,11 @@
 		 // fun3 : (n) => {log(`${n}`)}
 
 		 fun3(n) {
-log(`${n}`)
+			log(`${n}`)
+		 }
+
+		 fun4 : function(){
+		 	log('fun4')
 		 }
 
 		}
@@ -34,6 +38,7 @@ log(`${n}`)
 		const test = new Test('yyy')
 		test.fun3('hello')
 		log(test.name)
+		test.fun4()
 
 	</script>
 </body>
