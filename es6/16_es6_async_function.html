@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>async 函数</title>
+        <script src="./../js/demo1.js"></script>
+        <script>
+            let fun1 = () => {
+                log('fun1')
+            }
+            const gen = async function(){
+                const f1 = await fun1() 
+                log('gen')
+                return 'gen f '
+            }
+
+            gen().then((result) => {
+                log('then : ' + result)
+            }).catch((e) => {
+                log('error')
+            })
+
+        </script>
+    </head>
+    <body>
+        <div>
+            <p>
+                <h1>async</h1>
+            </p>
+        </div>
+    </body>
+</html>

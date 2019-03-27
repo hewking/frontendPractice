@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Generator 函数</title>
+        <script type="text/javascript" src="../js/demo1.js"></script>
+        <script type="text/javascript">
+
+            function* helloworldGenerator(){
+                yield 'hello'
+                yield 'world'
+                return 'ending'
+            }
+
+            // 返回的是一个遍历器对象，遍历内部每一个状态
+            let hw = helloworldGenerator()
+            // 通过执行next 方法遍历，直到遇到yield,return
+            let v1 = hw.next()
+            log(v1)
+            log(hw.next())
+            log(hw.next())
+            log(hw.next())
+
+            //Generator 函数可以不用yield表达式，这时就变成了一个单纯的暂缓执行函数。
+            let fun1 = function* demo(){
+                log('hello ' + (yield 123))
+            }()
+            log(fun1.next())
+
+            //yield表达式用作函数参数或放在赋值表达式的右边，可以不加括号。
+            function* demo2(){
+                log(yield 'a',yield 'b')
+                let input = yield
+            }
+
+            // fun1.throw(new Error('error'))
+            fun1.return(1)
+
+            //在generator函数中，执行另一个generator函数，是不能直接调用的，
+            //这个就需要用到yield*表达式，用来在一个 Generator 函数里面执行另一个 Generator 函数。
+
+            function* numbers(){
+                let file = new FileReader('./15_es6.test.html')
+                try{
+                    while(!file.eof) {
+                        yield parseInt(file.readLine(),10)
+                    }
+                }finally{
+                    // file.close()
+                }
+            }
+
+            let ns = numbers()
+            log(ns.next())
+
+
+            </script>
+    </head>
+    <body>
+        <div>
+            <p>
+                <h1>Generator</h1>
+            </p>
+        </div>
+    </body>
+</html>
