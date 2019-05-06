@@ -16,12 +16,12 @@ function quickSort(arr : number[],l : number,r : number) {
     if (l > r) {
         return
     }
-    let index = partiction(arr,l,r)
+    let index = partition(arr,l,r)
     quickSort(arr,l,index -1)
     quickSort(arr,index + 1,r)
 }
 
-function partiction(arr:number[],l : number,r : number) : number {
+function partition(arr:number[],l : number,r : number) : number {
     let k = arr[l]
     while(l < r) {
         while(l < r && arr[r] >= k) {
