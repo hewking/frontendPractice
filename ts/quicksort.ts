@@ -1,7 +1,4 @@
 
-
-
-
 /**
  * 
  * @param arr 快速排序
@@ -38,7 +35,6 @@ function partition(arr:number[],l : number,r : number) : number {
 }
 
 (function(){
-
     let arr : number[] = [2,43,1,54,32,22]
     quickSort(arr,0,arr.length -1)
     console.log(arr)
