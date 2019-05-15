@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Svg demo</title>
+</head>
+<body>
+	<svg width="100%" height="100%">
+		<circle id="circle" cx="50" cy="50" r="50" fill="red"/>
+	</svg>
+
+	<!-- 如果想展示svg的一部分 就要使用ViewBox 属性 -->
+	<svg width="100" height="100" viewBox="50 50 50 50" style="background-color: skyblue">
+		<circle id = "circle2" cx = "50" cy="50" r="50" fill="red"/>
+	</svg>
+
+	<svg width="17.1" height="20"  viewBox="32.484 17.5 15.515 17.5" style="background-color: skyblue" >
+		<Path
+			d="M 38.484,17.5c0,8.75,1,13.5-6,17.5C51.484,35,52.484,17.5,38.484,17.5z"
+			x="0"
+			y="0"
+			fill="red"
+		/>
+	</svg>
+
+	<svg width="300" height="180" style="background-color: skyblue">
+		<path
+			d="M 18,3
+			L 46,3
+			L 46,40
+			L 61,40
+			L 32,68,
+			L 3,40
+			L 18,40
+			Z
+			"
+		/>
+	</svg>
+
+	<svg left="-6" width ="20" height="20" style="background-color: skyblue">
+		<path
+			d="
+			M 0,10
+			L 20,20
+			L 20,0
+			Z
+			"
+			fill ="red"
+		/>
+	</svg>
+
+	<svg left="-6" width="20" height="20" style="background-color: skyblue">
+		<path 
+		d="
+		M 0,0
+		L 0,20
+		L 20,10,
+		Z
+		"
+		fill="red"
+		/>
+
+	</svg>
+
+</body>
+</html>

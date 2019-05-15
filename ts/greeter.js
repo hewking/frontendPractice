@@ -11,3 +11,8 @@ function sayHello(arg) {
     return 'hello' + arg.firstName + " lastName : " + arg.lastName;
 }
 
+console.log(sayHello({
+    firstName:'cheng',
+    lastName:'jianhao'
+}))
+
