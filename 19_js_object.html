@@ -1,49 +1,48 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>js 的对象</title>
-	<script type="text/javascript">
-		document.write("<h2>js中的一切都是对象</h2><br/>")
-		document.write("<p>对象构造器</p>")
+    <title>js 的对象</title>
+    <script type="text/javascript">
+    document.write("<h2>js中的一切都是对象</h2><br/>")
+    document.write("<p>对象构造器</p>")
 
-		// 这里加上this,普通的函数就变成了 对象构造器，真是厉害啊
-		function person(age,name) {
-			this.age = age;
-			this.sex = "male";
-			this.n = name;
+    // 这里加上this,普通的函数就变成了 对象构造器，真是厉害啊
+    function person(age, name) {
+        this.age = age;
+        this.sex = "male";
+        this.n = name;
 
-			this.changeName = changeName // 因为函数也是对象，所以也是要声明和赋值的
-			function changeName(arg) {
-				this.n = arg
-			}
-		}
+        this.changeName = changeName // 因为函数也是对象，所以也是要声明和赋值的
+        function changeName(arg) {
+            this.n = arg
+        }
+    }
 
-		var p = new person(19,"mary")
+    var p = new person(19, "mary")
 
-		var p2 = {
-			age : "19",
-			name : "tom"
-		}
+    var p2 = {
+        age: "19",
+        name: "tom"
+    }
 
-		document.write("<br/>")
-		for (a in p) {
-			document.write("<br/>" + p[a])
-			document.write("<br/>" + p.age)
-		}
+    document.write("<br/>")
+    for (a in p) {
+        document.write("<br/>" + p[a])
+        document.write("<br/>" + p.age)
+    }
 
-		for (a in p2) {
-						document.write("<br/>" + p2[a])
-		}
+    for (a in p2) {
+        document.write("<br/>" + p2[a])
+    }
 
-		document.write("<br/>")
-		p.changeName("yameide")
-		document.write(p.n)
-
-
-
-	</script>
+    document.write("<br/>")
+    p.changeName("yameide")
+    document.write(p.n)
+    </script>
 </head>
+
 <body>
-	
 </body>
+
 </html>
