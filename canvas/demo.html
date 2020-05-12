@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    canvas 的一些demo
+  </title>
+</head>
+
+<body>
+  <canvas id="canvas" width="200" height="200"></canvas>
+  <script>
+    const ctx = document.getElementById('canvas').getContext('2d');
+    const fillRect = () => {
+      ctx.fillStyle = "red";
+      ctx.fillRect(0, 0, 150, 150);
+    }
+
+    const lineRect = () => {
+      ctx.moveTo(0,10);
+      ctx.lineTo(150,100);
+      ctx.lineTo(0,100);
+      ctx.stroke();
+    }
+
+    lineRect();
+
+  </script>
+</body>
+
+</html>
