@@ -63,21 +63,19 @@ let slowestKey = (releaseTimes, keysPressed) => {
 
     const n = releaseTimes.length;
 
-    // const durArray = new Array(n);
+    const durArray = new Array(n);
 
-    const durMap = new Map();
+    durArray[0] = releaseTimes[0];
 
-    // durArray[0] = releaseTimes[0];
-
-    durMap.set(keysPressed[0], releaseTimes[0]);
     for(let i = 1 ; i < n ; i ++) {
-        // durArray[i] = releaseTimes[i] - releaseTimes[i - 1];
-        durMap.set(keysPressed[i], releaseTimes[i] - releaseTimes[i - 1]);
+        durArray[i] = releaseTimes[i] - releaseTimes[i - 1];
     }
 
-    console.log("durMap",durMap);
+    console.log("durMap",durArray);
 
-    durMap.entries
+    let maxValue = durArray.reduce((pre,cur,index,array) => {
+        
+    });
 
 };
 
