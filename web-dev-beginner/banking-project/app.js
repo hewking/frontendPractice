@@ -1,10 +1,10 @@
 const routes = {
-  '/login': {templateId: 'login'},
-  '/dashboard': {templateId: 'dashboard', init: refresh}
+  '/login': {title:'Login', templateId: 'login'},
+  '/dashboard': {totle: 'My Account', templateId: 'dashboard', init: refresh}
 }
 
-const apiPreFix = '/api';
-const baseUrl = '//localhost:5000' + apiPreFix;
+const apiPreFix = 'api';
+const baseUrl = 'http://localhost:5000/' + apiPreFix;
 const storageKey = 'saveAccount';
 
 let state = Object.freeze({
@@ -26,6 +26,8 @@ function updateRoute() {
   if (typeof route.init === 'function') {
     route.init();
   }
+
+  document.title = route.title;
 
 }
 
@@ -82,7 +84,7 @@ async function register(){
   const json = JSON.stringify(data);
   const result = await createAccount(json);
 
-  if (!result.error) {
+  if (result.error) {
     return updateElement('An error occured: ', result.error);
   }
 
@@ -96,11 +98,11 @@ async function login(){
   const user = input.user.value;
   const data = await getAccount(user);
   
-  if (!data.error) {
+  if (data.error) {
     return updateElement('loginError', data.error);
   }
 
-  updateState('account', result);
+  updateState('account', data);
   navigate('/dashboard');
 }
 
@@ -111,8 +113,8 @@ function logout(){
 
 async function getAccount(user) {
   try {
-    const response = sendRequest(baseUrl + "/accounts" + encodeURIComponent(user));
-    return response.await();
+    const data = sendRequest(baseUrl + "/accounts/" + encodeURIComponent(user));
+    return data;
   } catch (error) {
     return {error: error.message || 'unknown message'};
   }
@@ -120,8 +122,8 @@ async function getAccount(user) {
 
 async function createAccount(account){
   try {
-    const response = await sendRequest(baseUrl + "/accounts",'POST', account)
-    return await response.json();
+    const data = await sendRequest(baseUrl + "/accounts",'POST', account)
+    return data;
   } catch (error) {
     return {error: error.message || 'unkown message'}
   }
