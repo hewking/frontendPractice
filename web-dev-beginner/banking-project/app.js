@@ -129,9 +129,24 @@ async function createAccount(account){
   }
 }
 
-async function addTransaction(){
-  const addForm = document.getElementById('addTransactionForm');
-  const formData = new FormData(addForm);
+function addTransaction(){
+ const dialog = document.getElementById('transactionDialog');
+ dialog.classList.add('show');
+
+ const transactionFrom = document.getElementById('addTransactionForm');
+  transactionFrom.reset();
+
+  transactionFrom.date.valueAsDate = new Date();
+
+}
+
+async function confirmTransaction(){
+  const dialog = document.getElementById('transactionDialog');
+  dialog.classList.remove('show');
+
+  const transactionForm = document.getElementById('addTransactionForm');
+
+  const formData = new FormData(transactionForm);
   const data = Object.fromEntries(formData);
 
   const result = await createTransaction(JSON.stringify(data));
@@ -140,7 +155,7 @@ async function addTransaction(){
     return updateElement('addTransactionError', result.error);
   }
 
-  addForm.reset();
+  transactionForm.reset();
   // refresh dashboard
 
   const account = {
@@ -151,6 +166,11 @@ async function addTransaction(){
 
   updateState('account', account);
   updateDashboard()
+}
+
+function cancelTransaction(){
+  const dialog = document.getElementById('transactionDialog');
+  dialog.classList.remove('show');
 }
 
 async function createTransaction(data){
