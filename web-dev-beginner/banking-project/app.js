@@ -1,6 +1,6 @@
 const routes = {
   '/login': {title:'Login', templateId: 'login'},
-  '/dashboard': {totle: 'My Account', templateId: 'dashboard', init: refresh}
+  '/dashboard': {title: 'My Account', templateId: 'dashboard', init: refresh}
 }
 
 const apiPreFix = 'api';
@@ -59,7 +59,7 @@ function updateDashboard(){
 
   const transactonRows = document.createDocumentFragment();
 
-  for (transacton of account.transactions) {
+  for (transaction of account.transactions) {
     transactonRows.appendChild(createTransactonRow(transaction));
   }
 
@@ -72,7 +72,7 @@ function createTransactonRow(transaction){
   const transactonRow = template.content.cloneNode(true);
   const tr = transactonRow.querySelector('tr');
   tr.children[0].textContent = transaction.date;
-  tr.children[1].textContent = transaction.Object;
+  tr.children[1].textContent = transaction.object;
   tr.children[2].textContent = transaction.amount.toFixed(2);
   return transactonRow;
 }
@@ -113,7 +113,7 @@ function logout(){
 
 async function getAccount(user) {
   try {
-    const data = sendRequest(baseUrl + "/accounts/" + encodeURIComponent(user));
+    const data = sendRequest("/accounts/" + encodeURIComponent(user));
     return data;
   } catch (error) {
     return {error: error.message || 'unknown message'};
@@ -122,23 +122,56 @@ async function getAccount(user) {
 
 async function createAccount(account){
   try {
-    const data = await sendRequest(baseUrl + "/accounts",'POST', account)
+    const data = await sendRequest("/accounts",'POST', account)
     return data;
   } catch (error) {
     return {error: error.message || 'unkown message'}
   }
 }
 
-async function sendRequest(url, method, body){
+async function addTransaction(){
+  const addForm = document.getElementById('addTransactionForm');
+  const formData = new FormData(addForm);
+  const data = Object.fromEntries(formData);
+
+  const result = await createTransaction(JSON.stringify(data));
+
+  if (result.error) {
+    return updateElement('addTransactionError', result.error);
+  }
+
+  addForm.reset();
+  // refresh dashboard
+
+  const account = {
+    ...state.account,
+    balance: state.account.balance + result.amount,
+    transactions: [...state.account.transactions, result]
+  }
+
+  updateState('account', account);
+  updateDashboard()
+}
+
+async function createTransaction(data){
   try {
-    const response = await fetch(url, {
+    const user = state.account.user;
+    return sendRequest(`/accounts/${user}/transactions`, 'POSt', data);
+  } catch (error) {
+    return {error:error.message || 'unknown message'}
+  }
+}
+
+async function sendRequest(api, method, body){
+  try {
+    const response = await fetch(baseUrl + api, {
       method: method || 'GET',
-      headers: body ? {'Content-type':'application/json'}: null,
-      body: body,
+      headers: body ? {'Content-type':'application/json'}: undefined,
+      body
     })
     return await response.json();
   } catch (error) {
-    return {error: error.message || 'unkown message'}
+    return {error: error.message || 'unknown message'}
   }
 }
 
@@ -172,9 +205,9 @@ async function refresh(){
 }
 
 function init(){
-  const savedAccount = localStorage.getItem(storageKey);
-  if (savedAccount) {
-    updateState('account', savedAccount);
+  const savedState  = localStorage.getItem(storageKey);
+  if (savedState ) {
+    updateState('account', JSON.parse(savedState));
   }
   window.onpopstate = () => updateRoute();
   updateRoute();
