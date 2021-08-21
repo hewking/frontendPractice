@@ -29,7 +29,6 @@ ul {
     font-family: monospace;
 }
 
-
 .light-theme {
     --bg: var(--green);
     --fontColor: var(--black);
