@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import "./styles.css";
-import {sendRequest} from "../infra/request";
+import { sendRequest } from "../infra/request";
 
 class Login extends Component {
   constructor(props) {
     super(props);
 
     this.accountInput = React.createRef();
+    this.accountRegister = React.createRef();
+    this.balance = React.createRef();
+    this.currency = React.createRef();
+    this.description = React.createRef();
   }
 
   componentDidMount() {}
@@ -35,18 +39,28 @@ class Login extends Component {
               <h2>Register</h2>
               <form>
                 <label for="username">username (required)</label>
-                <input id="username" name="user" type="text" required></input>
+                <input
+                  ref={this.accountRegister}
+                  id="username"
+                  name="user"
+                  type="text"
+                  required
+                ></input>
                 <label for="currency">currency (required)</label>
                 <input
+                  ref={this.currency}
                   id="currency"
                   name="currency"
                   type="text"
                   value="$"
                 ></input>
-                <label for="description">description</label>
+                <label ref={this.description} for="description">
+                  description
+                </label>
                 <input id="description" name="description" type="text"></input>
                 <label for="balance">balance</label>
                 <input
+                  ref={this.balance}
                   id="balance"
                   name="balance"
                   type="number"
@@ -71,6 +85,24 @@ class Login extends Component {
     console.log("startlogin account:", account);
   };
 
+  register = async () => {
+    const user = this.accountRegister.current.value;
+    const balance = this.balance.current.value;
+    const currency = this.currency.current.value;
+    const description = this.description.current.value;
+
+    const result = await this.createAccount({user, balance, currency, description});
+
+    if (result.error) {
+      alert(result.error);
+      return;
+    }
+
+    console.log('register result: ',result);
+
+
+  };
+
   createAccount = async (account) => {
     try {
       const result = await sendRequest("/accounts", "POST", account);
@@ -80,15 +112,14 @@ class Login extends Component {
     }
   };
 
- async getAccount(user) {
+  async getAccount(user) {
     try {
       const data = sendRequest("/accounts/" + encodeURIComponent(user));
       return data;
     } catch (error) {
-      return {error: error.message || 'unknown message'};
+      return { error: error.message || "unknown message" };
     }
   }
-
 }
 
 export default Login;
