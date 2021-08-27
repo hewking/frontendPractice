@@ -4,12 +4,16 @@
 	<link rel="stylesheet" type="text/css" href="../css/mystyle.css"/>
 	<title>style demo</title>
 	<style type="text/css">
-		/*派生选择器*/
+		/*派生选择器 li 元素下的所有的 li 不管是不是子元素都生效*/
 		li strong {
 			font-style: italic;
 			font-weight: normal;
 			font-size: 20px;
+			color: skyblue;
 		}
+
+		/* 子元素选择器 只是 strong 作为h1 子元素的时候才生效*/
+		h1 > strong {color:red;}
 
 		/*id 选择器*/
 		#red {
@@ -44,7 +48,13 @@
 	<p><strong>不在列表中 style 不起作用</strong></p>
 	<ul>
 		<li><strong>在列表中起作用了吧</strong></li>
+		<li><em><strong>派生选择器，会生效吗</strong></em></li>
 	</ul>
+
+	<h1>在h1 的子元素<strong>strong 看是否生效</strong></h1>
+	<h1>h1 中加一个em<em><strong>在套一个strong</strong></em><strong>生效吗</strong></h1>
+	<h1></h1>
+
 	<p id="red" class="center">hahahahah</p>
 
 	<p>
