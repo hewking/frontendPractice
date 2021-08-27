@@ -1,7 +1,7 @@
 const apiPreFix = "api";
 const baseUrl = "http://localhost:5000/" + apiPreFix;
 
-async function sendRequest(api, method, body) {
+export async function sendRequest(api, method, body) {
   try {
     const response = await fetch(baseUrl + api, {
       method: method || "GET",
@@ -14,6 +14,3 @@ async function sendRequest(api, method, body) {
   }
 }
 
-export default {
-    sendRequest
-};

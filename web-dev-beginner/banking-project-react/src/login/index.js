@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./styles.css";
-import sendRequest from "../infra/request";
+import {sendRequest} from "../infra/request";
 
 class Login extends Component {
   constructor(props) {
@@ -63,7 +63,7 @@ class Login extends Component {
 
   login = async () => {
     const account = this.accountInput.current.value;
-    const result = await this.createAccount(account);
+    const result = await this.getAccount(account);
     if (result.error) {
       alert(result.error);
       return;
@@ -79,6 +79,16 @@ class Login extends Component {
       return { error: e.message || "unkown error" };
     }
   };
+
+ async getAccount(user) {
+    try {
+      const data = sendRequest("/accounts/" + encodeURIComponent(user));
+      return data;
+    } catch (error) {
+      return {error: error.message || 'unknown message'};
+    }
+  }
+
 }
 
 export default Login;
