@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import "./styles.css";
+import sendRequest from "../infra/request";
 
 class Login extends Component {
   constructor(props) {
     super(props);
+
+    this.accountInput = React.createRef();
   }
 
   componentDidMount() {}
@@ -19,7 +22,13 @@ class Login extends Component {
             <h2>Login</h2>
             <form id="loginForm">
               <label for="username">username</label>
-              <input id="username" name="user" type="text" required></input>
+              <input
+                id="username"
+                name="user"
+                type="text"
+                required
+                ref={this.accountInput}
+              ></input>
               <button onClick={this.login}>Login</button>
             </form>
             <div>
@@ -53,10 +62,22 @@ class Login extends Component {
   }
 
   login = async () => {
-    const form = document.getElementById('loginForm'); 
-    const account = form.user.value;
-    
-    console.log("startlogin");
+    const account = this.accountInput.current.value;
+    const result = await this.createAccount(account);
+    if (result.error) {
+      alert(result.error);
+      return;
+    }
+    console.log("startlogin account:", account);
+  };
+
+  createAccount = async (account) => {
+    try {
+      const result = await sendRequest("/accounts", "POST", account);
+      return result;
+    } catch (e) {
+      return { error: e.message || "unkown error" };
+    }
   };
 }
 
