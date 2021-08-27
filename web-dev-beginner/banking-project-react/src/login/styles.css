@@ -1,0 +1,174 @@
+:root {
+  /* colors */
+  --primary: #0091ea;
+  --primary-light: #7bbde6;
+  --accent: #546e7a;
+  --grey: #445;
+  --error: #f52;
+  --background: #f5f5f6;
+  --background-accent: #cfe5f2;
+  --white: #fff;
+  --border: #99a;
+
+  /* Sizes */
+  --radius: 10px;
+  --space-xs: 5px;
+  --space-sm: 10px;
+  --space-md: 20px;
+  --space-xl: 40px;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.login-page {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  /* background 设置渐变， linear-gradient 线性渐变 */
+  background: linear-gradient(var(--primary), var(--primary-light));
+}
+
+.login-container {
+  /* flex 布局中的属性 */
+  flex: auto;
+  max-width: 480px;
+  max-height: 100%;
+  /* CSS 属性 overflow 定义当一个元素的内容太大而无法适应
+       块级格式化上下文 时候该做什么、
+       
+       auto:  由浏览器定夺，如果内容被修剪，就会显示滚动条 
+  
+       */
+  overflow: auto;
+}
+
+.login-content {
+  background-color: var(--background);
+  padding: var(--space-sm);
+}
+
+.login-separator {
+  position: relative;
+  top: 0.5em;
+  border-top: 1px solid var(--border);
+  opacity: 0.6;
+  margin: var(--space-md) 0;
+}
+
+/* 
+    大于号表示某个元素的下一代元素。A>B 指选择 A 元素里面的 B 元素，其中 B 元素是 A 元素的第一代。
+     */
+.login-separator > span {
+  position: relative;
+  top: -0.5em;
+  background-color: var(--background);
+  padding: var(--space-sm);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin: var(--space-sm) var(--space-md);
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+h2 {
+  /* var() 应用于自定义属性例如 --primary,使用这个值 */
+  color: var(--primary);
+  /* text设置为大写 */
+  text-transform: uppercase;
+  /* 字体加粗 */
+  font-weight: bold;
+  /* rem 单位，根元素的font-size， html元素，这里html
+      没有设置，body 元素设置了，可能是使用的这个值 */
+  font-size: 1.5rem;
+  /* margin：top right bottom left, 
+      两个值， 代表上下， 左右 */
+  margin: var(--space-md) 0;
+}
+
+input {
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-sm);
+  height: 40px;
+  padding: var(--space-xs) var(--space-sm);
+  /* boarder 设置边框，大小，填充方式 ，颜色 */
+  border: 1px solid var(--border);
+  /* 设置边框圆角 */
+  border-radius: var(--radius);
+}
+
+/* CSS 伪类 :focus 表示获得焦点的元素（如表单输入）。
+    当用户点击或触摸元素或通过键盘的 “tab” 键选择它时会被触发 
+    
+    当input 处于focus 的状态会被触发*/
+input:focus {
+  border-color: var(--primary);
+  /* CSS 的 outline 属性是在一条声明中设置多个轮廓属性的简写属性 ，
+       例如 outline-style, outline-width 和 outline-color。
+       
+       outline 跟 border 相似，但有区别
+       
+       1. outline 不占据空间，绘制于元素内容周围。
+       2. 根据规范，outline 通常是矩形，但也可以是非矩形的。
+  
+       */
+  outline: 0;
+}
+
+label {
+  color: var(--grey);
+  text-transform: uppercase;
+  /* 百分比意思为父元素字体大小的正数 <percentage> */
+  font-size: 80%;
+}
+
+button {
+  font-weight: bold;
+  background-color: var(--primary);
+  color: var(--white);
+  height: 40px;
+  padding: var(--space-xs);
+  border: 0;
+  border-radius: var(--radius);
+  text-transform: uppercase;
+  min-width: 100px;
+  margin: var(--space-sm) 0;
+}
+
+/* 类选择器 */
+.button-alt {
+  background-color: transparent;
+  color: var(--primary);
+}
+
+button:hover {
+  filter: brightness(115%);
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+  border: 2px solid var(--grey);
+}
+
+.login-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--white);
+    margin: var(--space-md);
+  }
