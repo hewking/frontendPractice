@@ -19,10 +19,13 @@
 }
 
 html,
-body {
+body,
+#app {
   padding: 0;
   margin: 0;
   height: 100%;
+  position: absolute;
+  width: 100%;
 }
 
 * {
@@ -66,8 +69,8 @@ body {
 }
 
 /* 
-    大于号表示某个元素的下一代元素。A>B 指选择 A 元素里面的 B 元素，其中 B 元素是 A 元素的第一代。
-     */
+大于号表示某个元素的下一代元素。A>B 指选择 A 元素里面的 B 元素，其中 B 元素是 A 元素的第一代。
+*/
 .login-separator > span {
   position: relative;
   top: -0.5em;
@@ -167,8 +170,18 @@ button:focus {
 }
 
 .login-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--white);
-    margin: var(--space-md);
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--white);
+  margin: var(--space-md);
+}
+
+.text-center {
+  text-align: center;
+}
+
+@media only screen and (min-width: 480px)  {
+  .login-content {
+    border-radius: var(--radius);
   }
+}

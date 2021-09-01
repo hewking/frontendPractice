@@ -17,57 +17,63 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="login-page">
-        <div className="login-container">
-          <div className="login-title">
-            <h1>Banking App</h1>
-          </div>
-          <div className="login-content">
-            <h2>Login</h2>
-            <form id="loginForm">
-              <label for="username">username</label>
-              <input
-                id="username"
-                name="user"
-                type="text"
-                required
-                ref={this.accountInput}
-              ></input>
-              <button onClick={this.login}>Login</button>
-            </form>
-            <div>
-              <h2>Register</h2>
-              <form>
-                <label for="username">username (required)</label>
+      <div id="app" style={{ backgroundColor: "skyblue", height: "100%" }}>
+        <div className="login-page">
+          <div className="login-container">
+            <div className="login-title">
+              <h1>Banking App</h1>
+            </div>
+            <div className="login-content">
+              <h2 className="text-center">Login</h2>
+              <form id="loginForm">
+                <label htmlFor="username">username</label>
                 <input
-                  ref={this.accountRegister}
                   id="username"
                   name="user"
                   type="text"
                   required
+                  ref={this.accountInput}
                 ></input>
-                <label for="currency">currency (required)</label>
-                <input
-                  ref={this.currency}
-                  id="currency"
-                  name="currency"
-                  type="text"
-                  value="$"
-                ></input>
-                <label ref={this.description} for="description">
-                  description
-                </label>
-                <input id="description" name="description" type="text"></input>
-                <label for="balance">balance</label>
-                <input
-                  ref={this.balance}
-                  id="balance"
-                  name="balance"
-                  type="number"
-                  value="0"
-                ></input>
-                <button>Register</button>
+                <button onClick={this.login}>Login</button>
               </form>
+              <div>
+                <h2 className="text-center">Register</h2>
+                <form>
+                  <label htmlFor="username">username (required)</label>
+                  <input
+                    ref={this.accountRegister}
+                    id="username"
+                    name="user"
+                    type="text"
+                    required
+                  ></input>
+                  <label htmlFor="currency">currency (required)</label>
+                  <input
+                    ref={this.currency}
+                    id="currency"
+                    name="currency"
+                    type="text"
+                    defaultValue="$"
+                  ></input>
+                  <label ref={this.description} htmlFor="description">
+                    description
+                  </label>
+                  <input
+                    id="description"
+                    name="description"
+                    type="text"
+                  ></input>
+                  <label htmlFor="balance">balance</label>
+                  <input
+                    ref={this.balance}
+                    id="balance"
+                    name="balance"
+                    type="number"
+                    defaultValue="0"
+                  />
+                  <button>Register</button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -91,16 +97,19 @@ class Login extends Component {
     const currency = this.currency.current.value;
     const description = this.description.current.value;
 
-    const result = await this.createAccount({user, balance, currency, description});
+    const result = await this.createAccount({
+      user,
+      balance,
+      currency,
+      description,
+    });
 
     if (result.error) {
       alert(result.error);
       return;
     }
 
-    console.log('register result: ',result);
-
-
+    console.log("register result: ", result);
   };
 
   createAccount = async (account) => {
