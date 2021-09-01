@@ -1,0 +1,1 @@
+document.write("一起学习 webpack");
