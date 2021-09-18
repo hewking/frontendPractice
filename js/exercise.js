@@ -76,9 +76,9 @@ const array = [{
 }];
 
 function pushTree(value, node){
-  if (node == null) {
-    node = new Node();
-    node.value = value;
+  if (node == undefined) {
+    console.log('pushTree ' , value);
+    node = new Node(value);
   } else {
     if (value > node.value) {
       pushTree(value, node.left);
@@ -86,7 +86,6 @@ function pushTree(value, node){
       pushTree(value, node.right);
     }
   }
-  return node;
 }
 
 // 最后一层子节点 1， 4， 3，2
@@ -95,7 +94,9 @@ function pushTree(value, node){
 
 let node;
 
-console.log(pushTree(1, node))
-console.log(pushTree(4, node))
-console.log(pushTree(3, node))
-console.log(pushTree(2, node))
+pushTree(1, node)
+pushTree(4, node)
+pushTree(3, node)
+pushTree(2, node)
+
+console.log(node);
