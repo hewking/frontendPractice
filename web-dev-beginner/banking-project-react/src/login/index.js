@@ -3,6 +3,7 @@ import "./styles.css";
 import { sendRequest } from "../infra/request";
 
 class Login extends Component {
+  
   constructor(props) {
     super(props);
 
@@ -82,6 +83,7 @@ class Login extends Component {
   }
 
   login = async () => {
+    // debugger
     const account = this.accountInput.current.value;
     const result = await this.getAccount(account);
     if (result.error) {
