@@ -84,6 +84,7 @@ class Login extends Component {
   login = async () => {
     const account = this.accountInput.current.value;
     const result = await this.getAccount(account);
+    debugger;
     if (result.error) {
       alert(result.error);
       return;
