@@ -13,7 +13,7 @@ class Login extends Component {
     this.description = React.createRef();
   }
 
-  componentDidMount() {}
+  componentDidMount() { }
 
   render() {
     return (
