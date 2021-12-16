@@ -14,7 +14,7 @@ class Login extends Component {
     this.description = React.createRef();
   }
 
-  componentDidMount() {}
+  componentDidMount() { }
 
   render() {
     return (
@@ -86,6 +86,7 @@ class Login extends Component {
     // debugger
     const account = this.accountInput.current.value;
     const result = await this.getAccount(account);
+    debugger;
     if (result.error) {
       alert(result.error);
       return;
