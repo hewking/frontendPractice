@@ -1,0 +1,72 @@
+.dialog {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    animation: slideFromTop 0.3s ease-in-out;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .dialog.show {
+    display: flex;
+  }
+
+  .dialog-content {
+    flex: auto;
+    background-color: var(--white);
+    max-width: 480px;
+    max-height: 100%;
+    padding: var(--space-sm);
+  }
+  
+  .dialog-buttons {
+    text-align: right;
+  }
+
+  @keyframes slideFromTop {
+    from {
+      top: -300px;
+      opacity: 0;
+    }
+    to {
+      top: 0;
+      opacity: 1;
+    }
+  }
+
+  
+/* @media CSS @规则 可用于基于一个或多个 媒体查询 的结果来应用样式表的一部分。
+ 使用它，您可以指定一个媒体查询和一个 CSS 块，当且仅当该媒体查询与正在使用其内容的设备匹配时，该 CSS 块才能应用于该文档。 */
+@media only screen and (min-width: 480px) {
+    .hide-xs {
+      display: initial;
+    }
+  
+    .login-content,
+    .dialog-content {
+      border-radius: var(--radius);
+    }
+  
+    .dialog-content {
+      margin-top: var(--space-xl);
+    }
+  }
+  
+  @media only screen and (min-width: 768px) {
+      .transactions-table {
+        border-radius: var(--radius);
+      }
+    
+      .dashboard-content {
+        width: 100%;
+        max-width: 768px;
+        align-self: center;
+      }
+    }

@@ -1,3 +1,38 @@
+:root {
+  /* colors */
+  --primary: #0091ea;
+  --primary-light: #7bbde6;
+  --accent: #546e7a;
+  --grey: #445;
+  --error: #f52;
+  --background: #f5f5f6;
+  --background-accent: #cfe5f2;
+  --white: #fff;
+  --border: #99a;
+
+  /* Sizes */
+  --radius: 10px;
+  --space-xs: 5px;
+  --space-sm: 10px;
+  --space-md: 20px;
+  --space-xl: 40px;
+}
+
+html,
+body,
+#app {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
 .App {
   text-align: center;
 }
@@ -35,4 +70,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.hide-xs {
+  display: none;
 }

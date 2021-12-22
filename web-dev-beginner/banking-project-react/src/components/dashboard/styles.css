@@ -1,0 +1,67 @@
+.dashboard-page {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+  }
+  
+  .dashboard-header {
+    background-color: var(--grey);
+    padding: 0 var(--space-sm);
+  }
+  
+  /* 两个平行写， 这代表着什么 */
+  .dashboard-header button {
+    float: right;
+    border: 1px solid;
+    background-color: transparent;
+  }
+  
+  .dashboard-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--white);
+    vertical-align: middle;
+    margin: 0 var(--space-sm);
+  }
+  
+  .dashboard-logo {
+    height: 60px;
+    vertical-align: middle;
+    padding: var(--space-xs);
+  }
+
+  .balance {
+    background: radial-gradient(
+      circle at center,
+      var(--primary),
+      var(--primary-light)
+    );
+    text-align: center;
+  }
+  
+  .balance > div {
+    color: var(--white);
+    padding-top: var(--space-xs);
+    text-transform: uppercase;
+  }
+  
+  .balance > span {
+    color: var(--white);
+    font-size: 3rem;
+  }
+
+  .transactions-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--space-sm);
+    color: var(--accent);
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .transactions-title > div {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }

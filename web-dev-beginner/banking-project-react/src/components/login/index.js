@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./styles.css";
-import { sendRequest } from "../infra/request";
+import { sendRequest } from "../../infra/request";
 
 class Login extends Component {
   
@@ -83,14 +83,18 @@ class Login extends Component {
   }
 
   login = async () => {
-    // debugger
+    debugger
     const account = this.accountInput.current.value;
     const result = await this.getAccount(account);
+
+    console.log("getAccount result", result);
+
     debugger;
     if (result.error) {
       alert(result.error);
       return;
     }
+
     console.log("startlogin account:", account);
   };
 
@@ -110,7 +114,7 @@ class Login extends Component {
     if (result.error) {
       alert(result.error);
       return;
-    }
+    };
 
     console.log("register result: ", result);
   };
