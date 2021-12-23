@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { useNavigate } from "react-router-dom";
 import "./styles.css";
 import { sendRequest } from "../../infra/request";
 
@@ -60,7 +61,9 @@ class Login extends Component {
                     type="number"
                     defaultValue="0"
                   />
-                  <button type="button" onClick={this.register}>Register</button>
+                  <button type="button" onClick={this.register}>
+                    Register
+                  </button>
                 </form>
               </div>
             </div>
@@ -79,6 +82,10 @@ class Login extends Component {
       return;
     }
 
+    const navigate = useNavigate();
+
+    navigate("/dashboard");
+
     console.log("startlogin account:", account);
   };
 
@@ -88,12 +95,14 @@ class Login extends Component {
     const currency = this.currency.current.value;
     const description = this.description.current.value;
 
-    const result = await this.createAccount(JSON.stringify({
-      user,
-      balance,
-      currency,
-      description,
-    }));
+    const result = await this.createAccount(
+      JSON.stringify({
+        user,
+        balance,
+        currency,
+        description,
+      })
+    );
 
     if (result.error) {
       alert(result.error);
