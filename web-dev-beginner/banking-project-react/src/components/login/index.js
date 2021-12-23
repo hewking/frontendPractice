@@ -3,7 +3,6 @@ import "./styles.css";
 import { sendRequest } from "../../infra/request";
 
 class Login extends Component {
-  
   constructor(props) {
     super(props);
 
@@ -14,7 +13,7 @@ class Login extends Component {
     this.description = React.createRef();
   }
 
-  componentDidMount() { }
+  componentDidMount() {}
 
   render() {
     return (
@@ -25,18 +24,7 @@ class Login extends Component {
               <h1>Banking App</h1>
             </div>
             <div className="login-content">
-              <h2 className="text-center">Login</h2>
-              <form id="loginForm">
-                <label htmlFor="username">username</label>
-                <input
-                  id="username"
-                  name="user"
-                  type="text"
-                  required
-                  ref={this.accountInput}
-                ></input>
-                <button onClick={this.login}>Login</button>
-              </form>
+              <LoginField ref={this.accountInput} onClick={this.login}/>
               <div>
                 <h2 className="text-center">Register</h2>
                 <form>
@@ -72,7 +60,7 @@ class Login extends Component {
                     type="number"
                     defaultValue="0"
                   />
-                  <button>Register</button>
+                  <button onClick={this.register}>Register</button>
                 </form>
               </div>
             </div>
@@ -83,18 +71,18 @@ class Login extends Component {
   }
 
   login = async () => {
-    debugger
     const account = this.accountInput.current.value;
-    const result = await this.getAccount(account);
-
-    console.log("getAccount result", result);
-
-    debugger;
-    if (result.error) {
-      alert(result.error);
-      return;
+    try {
+      const result = await this.getAccount(account);
+      console.log("getAccount result", result);
+      if (result.error) {
+        alert(result.error);
+        console.error(result.error);
+        return;
+      }
+    } catch (e) {
+      console.error(e);
     }
-
     console.log("startlogin account:", account);
   };
 
@@ -114,7 +102,7 @@ class Login extends Component {
     if (result.error) {
       alert(result.error);
       return;
-    };
+    }
 
     console.log("register result: ", result);
   };
@@ -137,5 +125,29 @@ class Login extends Component {
     }
   }
 }
+
+const LoginFieldInner = (props) => {
+  const { innerRef, onClick } = props;
+  return (
+    <div>
+      <h2 className="text-center">Login</h2>
+      <form id="loginForm">
+        <label htmlFor="username">username</label>
+        <input
+          id="username"
+          name="user"
+          type="text"
+          required
+          ref={innerRef}
+        ></input>
+        <button type="button" onClick={onClick}>Login</button>
+      </form>
+    </div>
+  );
+};
+
+const LoginField = React.forwardRef((props, ref) => (
+  <LoginFieldInner innerRef={ref} {...props} />
+));
 
 export default Login;
