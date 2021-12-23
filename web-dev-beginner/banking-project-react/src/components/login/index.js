@@ -17,14 +17,14 @@ class Login extends Component {
 
   render() {
     return (
-      <div id="app" style={{ backgroundColor: "skyblue", height: "100%" }}>
+      <div id="app" style={{ height: "100%" }}>
         <div className="login-page">
           <div className="login-container">
             <div className="login-title">
               <h1>Banking App</h1>
             </div>
             <div className="login-content">
-              <LoginField ref={this.accountInput} onClick={this.login}/>
+              <LoginField ref={this.accountInput} onClick={this.login} />
               <div>
                 <h2 className="text-center">Register</h2>
                 <form>
@@ -60,7 +60,7 @@ class Login extends Component {
                     type="number"
                     defaultValue="0"
                   />
-                  <button onClick={this.register}>Register</button>
+                  <button type="button" onClick={this.register}>Register</button>
                 </form>
               </div>
             </div>
@@ -72,17 +72,13 @@ class Login extends Component {
 
   login = async () => {
     const account = this.accountInput.current.value;
-    try {
-      const result = await this.getAccount(account);
-      console.log("getAccount result", result);
-      if (result.error) {
-        alert(result.error);
-        console.error(result.error);
-        return;
-      }
-    } catch (e) {
-      console.error(e);
+    const result = await this.getAccount(account);
+    if (result.error) {
+      alert(result.error);
+      console.error(result.error);
+      return;
     }
+
     console.log("startlogin account:", account);
   };
 
@@ -92,12 +88,12 @@ class Login extends Component {
     const currency = this.currency.current.value;
     const description = this.description.current.value;
 
-    const result = await this.createAccount({
+    const result = await this.createAccount(JSON.stringify({
       user,
       balance,
       currency,
       description,
-    });
+    }));
 
     if (result.error) {
       alert(result.error);
@@ -140,7 +136,9 @@ const LoginFieldInner = (props) => {
           required
           ref={innerRef}
         ></input>
-        <button type="button" onClick={onClick}>Login</button>
+        <button type="button" onClick={onClick}>
+          Login
+        </button>
       </form>
     </div>
   );
