@@ -15,6 +15,15 @@ ReactDOM.render(
           在App 组件中指定一个outlet */}
           <Route path="expenses" element={<Expenses />} />
           <Route path="invoices" element={<Invoices />} />
+          {/* * 匹配默认路由，如果没有具体的路径匹配则匹配这里，默认组件，避免空页面 */}
+          <Route
+            path="*"
+            element={
+              <main style={{ padding: "1rem" }}>
+                <p>There's is nothing here</p>
+              </main>
+            }
+          />
         </Route>
       </Routes>
     </BrowserRouter>
