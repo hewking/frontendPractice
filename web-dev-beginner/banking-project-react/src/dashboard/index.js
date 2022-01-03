@@ -1,9 +1,9 @@
 import { React } from 'react';
+import "./styles.css";
 
 export default class Dashboard extends React.Component {
   render() {
     return (
-      <div>
         <section class="dashboard-page">
           <header class="dashboard-header">
             <img class="dashboard-logo" src="logo.svg" alt="Squirrel Banking Logo"/>
@@ -34,7 +34,6 @@ export default class Dashboard extends React.Component {
             </table>
           </div>
         </section>
-      </div>
     );
   }
 }

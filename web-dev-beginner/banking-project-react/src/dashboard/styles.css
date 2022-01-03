@@ -1,0 +1,31 @@
+.dashboard-page {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.dashboard-header {
+  background-color: var(--grey);
+  padding: 0 var(--space-sm);
+}
+
+/* 两个平行写， 这代表着什么 */
+.dashboard-header button {
+  float: right;
+  border: 1px solid;
+  background-color: transparent;
+}
+
+.dashboard-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--white);
+  vertical-align: middle;
+  margin: 0 var(--space-sm);
+}
+
+.dashboard-logo {
+  height: 60px;
+  vertical-align: middle;
+  padding: var(--space-xs);
+}
