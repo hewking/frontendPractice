@@ -1,5 +1,5 @@
 import { getInvoices } from "../data.js";
-import {Link, Outlet} from 'react-router-dom'
+import { Link, Outlet, NavLink } from "react-router-dom";
 
 export default function Invoices() {
   let invoices = getInvoices();
@@ -8,18 +8,24 @@ export default function Invoices() {
       <nav style={{ borderright: "solid 1px", padding: "1rem" }}>
         {invoices.map((invoice) => {
           return (
-            <Link
-              style={{ display: "block", margin: "1rem 0" }}
+            <NavLink
+              style={({ isActive }) => {
+                return {
+                  display: "block",
+                  margin: "1rem 0",
+                  color: isActive ? "red" : "",
+                };
+              }}
               to={`/invoices/${invoice.number}`}
-            //   列表需要设置key 属性，key 为组件默认属性
+              //   列表需要设置key 属性，key 为组件默认属性
               key={invoices.number}
             >
               {invoice.name}
-            </Link>
+            </NavLink>
           );
         })}
       </nav>
-      <Outlet/>
+      <Outlet />
     </div>
   );
 }

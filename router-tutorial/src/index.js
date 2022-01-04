@@ -16,6 +16,12 @@ ReactDOM.render(
           在App 组件中指定一个outlet */}
           <Route path="expenses" element={<Expenses />} />
           <Route path="invoices" element={<Invoices />} >
+            {/* 索引路由，索引路由路径与父节点相同，也就是说没有路径 */}
+            <Route index element={
+              <main style={{padding:"1rem"}}>
+                <p>Select an invoice</p>
+              </main>
+            }></Route>
             <Route path=":invoiceId" element={<Invoice/>}></Route>
           </Route>
           {/* * 匹配默认路由，如果没有具体的路径匹配则匹配这里，默认组件，避免空页面 */}
