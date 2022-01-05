@@ -1,7 +1,7 @@
-import {React} from React;
+import {Component} from "React";
 import './styles.css';
 
-export default class Transaction extends React.Component {
+export default class Transaction extends Component {
 
   render() {
     return (

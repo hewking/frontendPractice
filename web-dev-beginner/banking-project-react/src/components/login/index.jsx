@@ -82,9 +82,9 @@ class Login extends Component {
       return;
     }
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    navigate("/dashboard");
+    // navigate("/dashboard");
 
     console.log("startlogin account:", account);
   };

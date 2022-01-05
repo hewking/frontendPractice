@@ -1,6 +1,7 @@
-import { React } from "react";
+import { React, Component } from "react";
+import "./styles.css";
 
-export default class Dashboard extends React.Component {
+export default class Dashboard extends Component {
 
   render() {
     return (
