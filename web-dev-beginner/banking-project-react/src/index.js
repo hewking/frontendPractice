@@ -13,9 +13,9 @@ ReactDOM.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          {/* <Route path="dashboard" elements={<DashBoard />} /> */}
-          <Route path="login" elements={<Login />} />
-          <Route path="*" elements={<PlaceHolder />} />
+          <Route path="dashboard" element={<DashBoard />} />
+          <Route path="login" element={<Login />} />
+          <Route path="*" element={<PlaceHolder />} />
         </Route>
       </Routes>
     </BrowserRouter>
