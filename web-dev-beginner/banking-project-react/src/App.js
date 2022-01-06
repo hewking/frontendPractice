@@ -1,9 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-import Login from './components/login';
+import logo from "./logo.svg";
+import "./App.css";
+import {
+  BrowserRouter,
+  Routes,
+  Link,
+  Route,
+  Outlet,
+  NavLink,
+} from "react-router-dom";
 
 function App() {
-  return <Login/>
+  return (
+    <main>
+      <Link to="/login">Login</Link>
+      <Link to="/dashboard">Dashboard</Link>
+      <Outlet />
+    </main>
+  );
 }
 
 export default App;

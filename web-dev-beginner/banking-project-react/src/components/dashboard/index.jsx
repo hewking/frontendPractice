@@ -1,6 +1,8 @@
-import { React } from "react";
+import { React, Component } from "react";
+import "./styles.css";
 
-export default class Dashboard extends React.Component {
+export default class Dashboard extends Component {
+
   render() {
     return (
       <section class="dashboard-page">
@@ -11,7 +13,7 @@ export default class Dashboard extends React.Component {
             alt="Squirrel Banking Logo"
           />
           <h1 class="dashboard-title hide-xs">Squirrel Banking</h1>
-          <button onclick="logout()">Logout</button>
+          <button onClick={this.logout}>Logout</button>
         </header>
         <div class="balance">
           <div>Balance</div>
@@ -21,11 +23,20 @@ export default class Dashboard extends React.Component {
         <div class="dashboard-content">
           <div class="transactions-title">
             <h2 id="description"></h2>
-            <button onclick="addTransaction()">Add Transaction</button>
+            <button onClilck={this.addTransaction}>Add Transaction</button>
           </div>
         
         </div>
       </section>
     );
   }
+
+  addTransaction = async () => {
+
+  }
+
+  logout = async () => {
+
+  }
+
 }
