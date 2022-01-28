@@ -81,12 +81,8 @@ class Login extends Component {
       console.error(result.error);
       return;
     }
-
-    // const navigate = useNavigate();
-
-    // navigate("/dashboard");
-
     console.log("startlogin account:", account);
+    return result;
   };
 
   register = async () => {
@@ -131,7 +127,8 @@ class Login extends Component {
   }
 }
 
-const LoginFieldInner = (props) => {
+function LoginFieldInner(props) {
+  const navigate = useNavigate();
   const { innerRef, onClick } = props;
   return (
     <div>
@@ -145,13 +142,17 @@ const LoginFieldInner = (props) => {
           required
           ref={innerRef}
         ></input>
-        <button type="button" onClick={onClick}>
+        <button type="button" onClick={async () => {
+          const result = await onClick();
+          console.log("result : ", result);
+          navigate("/dashboard");
+        }}>
           Login
         </button>
       </form>
     </div>
   );
-};
+}
 
 const LoginField = React.forwardRef((props, ref) => (
   <LoginFieldInner innerRef={ref} {...props} />
