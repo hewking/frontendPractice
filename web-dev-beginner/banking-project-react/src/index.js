@@ -2,21 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import "./App.css";
 import reportWebVitals from "./reportWebVitals";
 import Login from "./components/login";
 import DashBoard from "./components/dashboard";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes,Route  } from "react-router-dom";
+import { createBrowserHistory } from "history";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter history={createBrowserHistory()}>
       <Routes>
         <Route path="/" element={<App />}>
-          {/* <Route path="dashboard" elements={<DashBoard />} /> */}
-          <Route path="login" elements={<Login />} />
-          <Route path="*" elements={<PlaceHolder />} />
+          <Route path="login" element={<Login />} />
+          <Route path="*" element={<PlaceHolder />} />
         </Route>
+        <Route path="/dashboard" elements={<DashBoard />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,

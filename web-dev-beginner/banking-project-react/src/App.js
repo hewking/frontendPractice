@@ -11,10 +11,10 @@ import {
 
 function App() {
   return (
-    <main>
+    <main className="App">
       <Link to="/login">Login</Link>
       <Link to="/dashboard">Dashboard</Link>
-      <Outlet />
+      {/* <Outlet /> */}
     </main>
   );
 }
