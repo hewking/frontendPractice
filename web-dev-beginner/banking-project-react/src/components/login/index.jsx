@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
 import { sendRequest } from "../../infra/request";
+import withNavigation  from "../infra/navigation";
 
 class Login extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class Login extends Component {
               <h1>Banking App</h1>
             </div>
             <div className="login-content">
-              <LoginField ref={this.accountInput} onClick={this.login} />
+              <LoginField onClick={this.login} navigate = {this.props.navigate}/>
               <div>
                 <h2 className="text-center">Register</h2>
                 <form>
@@ -127,9 +128,8 @@ class Login extends Component {
   }
 }
 
-function LoginFieldInner(props) {
-  const navigate = useNavigate();
-  const { innerRef, onClick } = props;
+function LoginField(props) {
+  const {onClick , navigate} = props;
   return (
     <div>
       <h2 className="text-center">Login</h2>
@@ -140,7 +140,7 @@ function LoginFieldInner(props) {
           name="user"
           type="text"
           required
-          ref={innerRef}
+          ref={this.accountInput}
         ></input>
         <button type="button" onClick={async () => {
           const result = await onClick();
@@ -154,8 +154,4 @@ function LoginFieldInner(props) {
   );
 }
 
-const LoginField = React.forwardRef((props, ref) => (
-  <LoginFieldInner innerRef={ref} {...props} />
-));
-
-export default Login;
+export default withNavigation(Login);
