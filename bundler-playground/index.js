@@ -76,3 +76,10 @@ function pack(graph) {
 `;
   return iifeBundler;
 }
+
+(function(){
+    const entry = path.resolve(__dirname, "app.js");
+    const graph = createDependencyGraph(entry);
+    const func = pack(graph);
+    eval(func);
+})()
