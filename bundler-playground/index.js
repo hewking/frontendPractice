@@ -77,9 +77,11 @@ function pack(graph) {
   return iifeBundler;
 }
 
+// [把pack 生成的字符串作为函数运行](https://blog.csdn.net/mafan121/article/details/95340284)
 (function(){
     const entry = path.resolve(__dirname, "app.js");
     const graph = createDependencyGraph(entry);
     const func = pack(graph);
-    eval(func);
+    // eval(func);
+    new Function([], func)();
 })()
