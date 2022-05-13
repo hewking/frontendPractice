@@ -83,5 +83,6 @@ function pack(graph) {
     const graph = createDependencyGraph(entry);
     const func = pack(graph);
     // eval(func);
+    console.log(func)
     new Function([], func)();
 })()
