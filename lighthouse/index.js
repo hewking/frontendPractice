@@ -6,7 +6,7 @@ const chromeLauncher = require('chrome-launcher');
   const chrome = await chromeLauncher.launch({chromeFlags: ['--headless']});
   const options = {logLevel: 'info', output: 'html', onlyCategories: ['performance'], port: chrome.port};
   // 使用 lighthouse 对目标页面进行跑分
-  const runnerResult = await lighthouse('http://119.29.195.26', options);
+  const runnerResult = await lighthouse('https://www.v2ex.com', options);
   // `.report` 是一个 html 类型的分析页面
   const reportHtml = runnerResult.report;
   fs.writeFileSync('lhreport.html', reportHtml);
