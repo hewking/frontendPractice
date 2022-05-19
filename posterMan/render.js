@@ -1,6 +1,7 @@
 // 获取连接池
 const pool = require('./pool')
 const config = require('./config')
+const {saveImage} = require('./util');
 
 const render = (ctx, handleFetchPicoImageError) =>
   // 使用连接池资源
@@ -56,7 +57,8 @@ const render = (ctx, handleFetchPicoImageError) =>
     ctx.set('Content-Disposition', `inline; filename=${filename}.${type}`)
     console.log("screenshot");
     await page.close()
-    console.log("screenshot end");
+    console.log("screenshot end image:", image);
+    saveImage(image, `image.jpeg`);
     return image
   })
 module.exports = render
