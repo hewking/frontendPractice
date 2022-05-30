@@ -1,0 +1,34 @@
+{
+  "name": "create-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "@jianhao/create-project": "bin/create-project",
+    "create-project": "bin/create-project"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [
+    "cli",
+    "create-project"
+  ],
+  "files": [
+    "bin/",
+    "src/",
+    "templates/"
+  ],
+  "dependencies": {
+    "arg": "^5.0.1",
+    "chalk": "^5.0.1",
+    "esm": "^3.2.25",
+    "execa": "^6.1.0",
+    "inquirer": "^8.2.4",
+    "listr": "^0.14.3",
+    "ncp": "^2.0.0",
+    "pkg-install": "^1.0.0"
+  }
+}
