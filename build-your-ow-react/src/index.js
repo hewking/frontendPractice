@@ -330,7 +330,7 @@ function reconcileChildren(wipFiber, elements) {
 const Didact = {
   createElement,
   render, 
-  userState,
+  useState,
 };
 
 /** @jsx Didact.createElement */
