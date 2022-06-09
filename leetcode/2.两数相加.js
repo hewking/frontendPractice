@@ -72,7 +72,7 @@ var addTwoNumbers = function(l1, l2) {
     let head = l1;
     while(l1 !== null) {
 
-        let value = l1.val + (l2? l2.val: 0);
+        let value = l1.val + ((l2 && l2.val) || 0);
 
         if (value >= 10) {
             l1.val = value % 10;
@@ -87,14 +87,14 @@ var addTwoNumbers = function(l1, l2) {
         }
 
         if (l1.next === null) {
-            l1.next = l2 ? l2.next : null;
+            l1.next = l2 && l2.next;
             l1 = l1.next;
             l2 = null;
             continue;
         }
 
         l1 = l1.next;
-        l2 = l2 ? l2.next : null;
+        l2 = l2 && l2.next;
         
     }
 

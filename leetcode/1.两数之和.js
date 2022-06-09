@@ -73,7 +73,7 @@ var twoSum = function(nums, target) {
 
     nums.forEach((v,i) => {
         let rest = target - v;
-        if (map[rest] != undefined) {
+        if (map[rest] && map[rest] !== i) {
             result =  [map[rest], i];
             return
         }
@@ -83,5 +83,3 @@ var twoSum = function(nums, target) {
 
 };
 // @lc code=end
-
-console.log(twoSum([1,2,3,4],5));
