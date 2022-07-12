@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container {
+  display: flex;
+  background-color: aquamarine;
+  border: 1px solid pink;
+  margin: 0px 10px 0px 10px;
+  border-radius: 6px;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.App {
+  background-color: skyblue;
+  padding: 10px;
+}
