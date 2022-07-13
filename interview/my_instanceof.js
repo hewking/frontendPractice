@@ -8,7 +8,7 @@ function myInstanceof(left, right){
 
   let protoType = Object.getPrototypeOf(left);
   while(protoType != null) {
-    if (protoType === right.protoType) {
+    if (protoType === right.prototype) {
       return true;
     }
     protoType = protoType.__proto__;
@@ -17,4 +17,5 @@ function myInstanceof(left, right){
 
 }
 
+console.log(myInstanceof(Object.create({}), Function));
 console.log(myInstanceof(Object.create({}), Object));
