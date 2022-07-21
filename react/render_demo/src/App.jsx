@@ -8,6 +8,7 @@ export default function App() {
         <p>我是第一段话</p>
         <p>我是第二段话</p>
         <CountState/>
+        <Counter/>
       </div>
     </div>
   );
@@ -36,4 +37,21 @@ function countFn(fn){
     fn(args);
     console.log("count times :" + count);
   }
+}
+
+function Counter(){
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    setTimeout(() => {
+      console.log("count :" + count);
+    }, 3000);
+  });
+  return (<div>
+    <p>
+      this count is {count}
+    </p>
+    <button onClick={() => {
+      setCount(count + 1);
+    }}>click me</button>
+  </div>)
 }
