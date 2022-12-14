@@ -1,0 +1,48 @@
+Arguments: 
+  /Users/jianhao/.nvm/versions/node/v14.19.3/bin/node /Users/jianhao/.nvm/versions/node/v14.19.3/bin/yarn publish
+
+PATH: 
+  /Users/jianhao/.oh-my-zsh/custom/plugins/git-open:/Users/jianhao/.nvm/versions/node/v14.19.3/bin:/Users/jianhao/.oh-my-zsh/custom/plugins/git-open:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/jianhao/Library/Android/sdk/emulator:/Users/jianhao/Library/Android/sdk/tools:/Users/jianhao/Library/Android/sdk/tools/bin:/Users/jianhao/Library/Android/sdk/platform-tools:/Users/jianhao/.local/bin:/Users/jianhao/Library/Android/sdk/emulator:/Users/jianhao/Library/Android/sdk/tools:/Users/jianhao/Library/Android/sdk/tools/bin:/Users/jianhao/Library/Android/sdk/platform-tools:/Users/jianhao/.local/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  14.19.3
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.npmmirror.com/-/user/org.couchdb.user:hewking: [FORBIDDEN] Public registration is not allowed
+      at Request.params.callback [as _callback] (/Users/jianhao/.nvm/versions/node/v14.19.3/lib/node_modules/yarn/lib/cli.js:66145:18)
+      at Request.self.callback (/Users/jianhao/.nvm/versions/node/v14.19.3/lib/node_modules/yarn/lib/cli.js:140890:22)
+      at Request.emit (events.js:400:28)
+      at Request.<anonymous> (/Users/jianhao/.nvm/versions/node/v14.19.3/lib/node_modules/yarn/lib/cli.js:141862:10)
+      at Request.emit (events.js:400:28)
+      at Gunzip.<anonymous> (/Users/jianhao/.nvm/versions/node/v14.19.3/lib/node_modules/yarn/lib/cli.js:141784:12)
+      at Object.onceWrapper (events.js:519:28)
+      at Gunzip.emit (events.js:400:28)
+      at endReadableNT (internal/streams/readable.js:1333:12)
+      at processTicksAndRejections (internal/process/task_queues.js:82:21)
+
+npm manifest: 
+  {
+    "name": "hwrld",
+    "version": "1.0.0",
+    "description": "Can log \"hello world\" and \"goodbye world\" to the console!",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+      "/dist"
+    ],
+    "dependencies": {
+      "typescript": "^4.9.4"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
