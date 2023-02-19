@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/cli.ts"],
+  "sourcesContent": ["export default function main(){\n    console.log(\"main start\");\n}"],
+  "mappings": "yaAAA,IAAAA,EAAA,GAAAC,EAAAD,EAAA,aAAAE,IAAA,eAAAC,EAAAH,GAAe,SAARE,GAAuB,CAC1B,QAAQ,IAAI,YAAY,CAC5B",
+  "names": ["cli_exports", "__export", "main", "__toCommonJS"]
+}
