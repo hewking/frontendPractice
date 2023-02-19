@@ -69,3 +69,4 @@ node dist/esbuild/cli.js
 ## 参考
 
 1. [2021 年如何从零创建一个 TypeScript 项目](https://wangwl.net/static/pages/starting_ts_project.html)
+2. [typescript-boilerplate](https://github.com/metachris/typescript-boilerplate)
