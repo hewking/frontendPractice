@@ -1,0 +1,18 @@
+{
+  "name": "jest",
+  "version": "1.0.0",
+  "description": "jest test demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "jest",
+    "test"
+  ],
+  "author": "hewking",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}
