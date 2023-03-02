@@ -13,7 +13,7 @@ import {
   Pressable,
 } from 'react-native';
 import Triangle from './components/Triangle';
-import {ScreenWidth, isIOS, RneFunctionComponent} from '../helpers';
+import {ScreenWidth, isIOS, RneFunctionComponent} from './helpers/';
 import {getElementVisibleWidth} from './helpers/getTooltipCoordinate';
 import {getTooltipStyle} from './helpers/getTooltipStyle';
 
