@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>打开App 测试</title>
+    <style></style>
+  </head>
+  <body>
+    <style>
+      .container {
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        background-color: antiquewhite;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+    <script>
+
+    </script>
+    <div class="container">
+      <a href="http://www.baidu.com">百度</a>
+      <button id="myButton">click me</button>
+    </div>
+
+    <script>
+
+      let button = document.getElementById("myButton");
+      button.addEventListener("click", function () {
+        console.log("打开app");
+        alert("打开集采");
+        // window.location.href = "http://www.baidu.com";
+        let url = "com.jicaiapp://?a=NATIVE_NAVIGATION";
+        window.location.href = uri;
+      });
+    </script>
+  </body>
+</html>
