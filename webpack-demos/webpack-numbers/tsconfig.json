@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": false /* 允许使用 any */,
+    "sourceMap": true,
+    "module": "es6",
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true /* 在 TypeScript 中将 JSON 文件解析为模块 */,
+    "allowSyntheticDefaultImports": true /* 允许对不包含默认导出的模块使用默认导入 */,
+    "declaration": true, /* 生成.d.ts 声明文件 */
+    "declarationMap": true,
+    "declarationDir": "dist"
+  }
+}

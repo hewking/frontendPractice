@@ -1,5 +1,5 @@
-import _ from 'lodash';
-import numRef from './ref.json';
+import * as _ from "lodash";
+import numRef from "./ref.json";
 
 export function numToWord(num) {
   return _.reduce(
@@ -7,7 +7,7 @@ export function numToWord(num) {
     (accum, ref) => {
       return ref.num === num ? ref.word : accum;
     },
-    ''
+    ""
   );
 }
 
