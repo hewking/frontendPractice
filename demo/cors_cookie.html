@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>cors_cookie</title>
+    <style></style>
+  </head>
+  <body>
+    <style>
+      .container {
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        background-color: antiquewhite;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+    <script></script>
+    <div class="container">
+      <a href="com.jicaiapp://">Open My App</a>
+      <a href="http://www.baidu.com">百度</a>
+      <button id="myButton">click me</button>
+    </div>
+
+    <div id="weather">weather</div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.9.1/vconsole.min.js"></script>
+    <script>
+      var vConsole = new VConsole();
+      vConsole.show();
+
+      function getAllCookies() {
+        const cookies = document.cookie.split(";");
+        const result = [];
+
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          result.push(cookie);
+        }
+
+        return result;
+      }
+
+      function fetchWeather() {
+        axios
+          .get("https://www.baidu.com", {
+            withCredentials: true,
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+            },
+          })
+          .then((response) => {
+            const weather = response.data.weather[0].description;
+            const weatherElement = document.getElementById("weather");
+            weatherElement.innerHTML = `The weather in London is ${weather}.`;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+
+      console.log("cookies", getAllCookies());
+
+      alert(getAllCookies());
+
+      let button = document.getElementById("myButton");
+      button.addEventListener("click", function () {
+        console.log("cookies", getAllCookies());
+        alert(getAllCookies());
+        fetchWeather();
+      });
+    </script>
+  </body>
+</html>
