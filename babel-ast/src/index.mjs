@@ -27,12 +27,17 @@ traverse(ast, {
       // Find console.log calls
       CallExpression(path) {
         if (
+          
           path.node.callee.object &&
           path.node.callee.object.name === "console" &&
           path.node.callee.property.name === "log"
         ) {
           console.log("Found console.log in function");
         }
+      },
+      // Visit variable declarations
+      VariableDeclaration(path) {
+        console.log("Variable declaration path:", path);
       },
     });
   },
